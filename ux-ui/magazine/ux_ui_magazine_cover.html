@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX/UI Today Magazine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .magazine-cover {
+            width: 420px;
+            height: 600px;
+            background: linear-gradient(135deg, #f8fcff 0%, #f0f8ff 30%, #ffffff 100%);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 15px;
+            padding: 30px 25px;
+        }
+
+        .magazine-header {
+            grid-column: 1 / -1;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .magazine-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #2c5aa0;
+            letter-spacing: -0.5px;
+            line-height: 0.9;
+        }
+
+        .thai-subtitle {
+            font-size: 12px;
+            color: #4a5568;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .issue-info {
+            font-size: 11px;
+            color: #666;
+            font-weight: 400;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-section {
+            grid-column: 1 / -1;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .main-headline {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a365d;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: -0.8px;
+        }
+
+        .highlight {
+            color: #4299e1;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #4299e1, #63b3ed);
+            border-radius: 2px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .content-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.15);
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #4299e1, #63b3ed);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .feature-text {
+            font-size: 13px;
+            color: #2d3748;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .visual-element {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phone-mockup {
+            width: 80px;
+            height: 140px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: rotate(-5deg);
+        }
+
+        .phone-screen {
+            width: 68px;
+            height: 120px;
+            background: white;
+            border-radius: 8px;
+            position: absolute;
+            top: 10px;
+            left: 6px;
+            display: flex;
+            flex-direction: column;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .screen-element {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .screen-element:first-child {
+            background: #4299e1;
+            height: 12px;
+        }
+
+        .screen-element:nth-child(2) {
+            background: #48bb78;
+            height: 10px;
+            width: 70%;
+        }
+
+        .floating-cards {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+        }
+
+        .ui-card {
+            width: 35px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 8px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .ui-card:nth-child(2) {
+            animation-delay: 1s;
+            margin-left: 15px;
+        }
+
+        .ui-card:nth-child(3) {
+            animation-delay: 2s;
+            margin-left: 8px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bottom-section {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ux-writing {
+            font-size: 16px;
+            color: #4a5568;
+            font-weight: 600;
+            font-style: italic;
+            position: relative;
+            padding: 15px 0;
+        }
+
+        .ux-writing::before,
+        .ux-writing::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #4299e1, transparent);
+        }
+
+        .ux-writing::before {
+            left: 0;
+        }
+
+        .ux-writing::after {
+            right: 0;
+        }
+
+        .decorative-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: radial-gradient(circle, #4299e1 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .accent-shape {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(66, 153, 225, 0.1), rgba(99, 179, 237, 0.05));
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .accent-shape-2 {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(72, 187, 120, 0.08), rgba(104, 211, 145, 0.04));
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        * {
+            z-index: 1;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="magazine-cover">
+        <div class="decorative-dots"></div>
+        <div class="accent-shape"></div>
+        <div class="accent-shape-2"></div>
+        
+        <div class="magazine-header">
+            <div class="magazine-title">นิตยสาร UX/UI Today</div>
+            <div class="thai-subtitle">ออกแบบที่เข้าใจ สร้างสรรค์ที่ใส่ใจ</div>
+            <div class="issue-info">ฉบับพิเศษ • กรกฎาคม 2568</div>
+        </div>
+
+        <div class="hero-section">
+            <h1 class="main-headline">
+                การออกแบบที่<br>
+                <span class="highlight">เข้าใจคุณ</span>
+            </h1>
+            <p class="tagline">สร้างประสบการณ์ดิจิทัลที่มีความหมาย ด้วยการออกแบบที่เน้นผู้ใช้เป็นศูนย์กลาง</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">เปลี่ยนผู้ใช้เป็นแฟนตัวจริง ด้วยการออกแบบที่ใส่ใจทุกรายละเอียด</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">เพิ่มยอดขาย 300% ด้วย UX ที่เข้าใจพฤติกรรมและความต้องการ</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">สร้าง Digital Experience ที่ผู้คนจดจำและแนะนำต่อเพื่อน</div>
+                </div>
+            </div>
+
+            <div class="visual-element">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-element"></div>
+                        <div class="screen-element"></div>
+                        <div class="screen-element"></div>
+                        <div class="screen-element"></div>
+                        <div class="screen-element"></div>
+                        <div class="screen-element"></div>
+                        <div class="screen-element"></div>
+                    </div>
+                </div>
+                
+                <div class="floating-cards">
+                    <div class="ui-card"></div>
+                    <div class="ui-card"></div>
+                    <div class="ui-card"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="ux-writing">สัมผัสความเข้าใจ... ทุกคลิกมีความหมาย</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Persona - ทศพิธธาดา เอี้ยวสุวรรณ (วิว)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-blue: #4299e1;
+            --accent-green: #48bb78;
+            --accent-purple: #9f7aea;
+            --accent-orange: #ed8936;
+            --accent-red: #e53e3e;
+            --accent-teal: #38b2ac;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.4;
+            height: 100vh; /* กำหนดความสูงเต็ม viewport */
+            overflow: hidden; /* **สำคัญมาก: ป้องกันแถบเลื่อนของหน้าหลัก** */
+            display: flex; /* ใช้ Flexbox เพื่อจัดองค์ประกอบตรงกลาง */
+            align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+            justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+        }
+
+        .persona-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            padding: 1rem; /* ระยะห่างภายในสำหรับเนื้อหากริด */
+            max-width: 1400px; /* **คงความกว้างสูงสุดไว้** */
+            width: 100%; /* ทำให้ใช้ความกว้างเต็มที่เท่าที่จะทำได้ */
+            margin: 30px auto; /* **ปรับเพิ่มระยะห่างแนวตั้ง (บน-ล่าง) เป็น 30px และให้แนวนอนจัดกึ่งกลางอัตโนมัติ** */
+            box-shadow: var(--shadow-md); /* เพิ่มเงา */
+            border-radius: 16px; /* เพิ่มขอบโค้ง */
+            background: var(--bg-white); /* เพิ่มพื้นหลัง */
+            /* ไม่ต้องมี max-height หรือ overflow-y ที่นี่ เพราะเราจะไปจัดการที่ .content-grid แทน */
+        }
+
+        /* Profile Section */
+        .profile-section {
+            background: var(--primary-gradient);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            border: 3px solid rgba(255,255,255,0.3);
+            overflow: hidden; /* Ensure image fits within avatar circle */
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-role {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .profile-quote {
+            font-style: italic;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border-left: 3px solid rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .basic-info {
+            margin-top: 0.5rem;
+            width: 100%;
+            text-align: left;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .basic-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.8rem;
+        }
+
+        .info-item i {
+            width: 20px;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* grid-template-rows: repeat(3, 1fr); /* ลบหรือคอมเมนต์ออก เพื่อให้ Grid ขยายตามเนื้อหา */
+            gap: 1rem;
+            overflow-y: auto; /* **สำคัญมาก: เพิ่มแถบเลื่อนเฉพาะใน Grid นี้หากเนื้อหาเกิน** */
+            max-height: calc(100vh - (30px * 2) - (1rem * 2) - 1rem); /* คำนวณ max-height ที่เหมาะสม */
+            /* 100vh - (margin-top/bottom * 2) - (persona-container padding-top/bottom * 2) - (gap if needed) */
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            position: relative;
+            /* overflow: hidden; **ลบออก หรือเปลี่ยนเป็น auto หากต้องการให้ card เลื่อนภายในได้เอง (แต่ตอนนี้จัดการที่ .content-grid แล้ว)** */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent, var(--accent-blue));
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--card-accent, var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .card-content {
+            flex: 1;
+            font-size: 0.8rem;
+            color: var(--text-medium);
+        }
+
+        /* Card specific styles */
+        .card-interests { --card-accent: var(--accent-green); }
+        .card-schedule { --card-accent: var(--accent-purple); }
+        .card-problems { --card-accent: var(--accent-red); }
+        .card-tech { --card-accent: var(--accent-orange); }
+        .card-goals { --card-accent: var(--accent-teal); }
+        .card-quotes { --card-accent: var(--accent-blue); }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag {
+            background: var(--card-accent, var(--accent-blue));
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .timeline-item {
+            margin-bottom: 0.6rem;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .timeline-item strong {
+            color: var(--card-accent, var(--accent-blue));
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.75rem;
+        }
+
+        .info-list i {
+            width: 16px;
+            color: var(--card-accent, var(--accent-blue));
+            margin-top: 2px;
+        }
+
+        .pain-point {
+            background: #fed7d7;
+            border: 1px solid #feb2b2;
+            border-radius: 6px;
+            padding: 0.6rem;
+            margin: 0.3rem 0;
+            font-size: 0.75rem;
+        }
+
+        .pain-point i {
+            color: #e53e3e;
+            margin-right: 0.4rem;
+        }
+
+        .suggestion-box {
+            background: #e6fffa;
+            border: 1px solid #38b2ac;
+            border-radius: 6px;
+            padding: 0.6rem;
+            font-size: 0.75rem;
+        }
+
+        .suggestion-box i {
+            color: #38b2ac;
+            margin-right: 0.4rem;
+        }
+        
+        .list-description {
+            list-style: none;
+            padding-left: 0;
+        }
+        .list-description li {
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
+            margin-left: 1.2rem;
+            position: relative;
+        }
+
+        .list-description li::before {
+            content: '•';
+            color: var(--card-accent, var(--accent-blue));
+            position: absolute;
+            left: -1em;
+            font-weight: bold;
+        }
+
+        .quote-item {
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-blue);
+            font-size: 0.75rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .persona-container {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .card-title {
+                font-size: 0.85rem;
+            }
+            
+            .card-content {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="persona-container">
+        <div class="profile-section">
+            <div class="avatar">
+                <img src="C:\Users\ukrit\Desktop\Folder\student\Year4\view-profile.jpg" alt="วิว" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            </div>
+            <h1 class="profile-name">ทศพิธธาดา เอี้ยวสุวรรณ</h1>
+            <p class="profile-role">
+                นักศึกษาชั้นปีที่ 4<br>
+                วิทยาการคอมพิวเตอร์<br>
+                คณะเทคโนโลยีสารสนเทศและนวัตกรรม
+            </p>
+            <div class="profile-quote">
+                "เทคโนโลยีคือกุญแจสำคัญในการพัฒนาอนาคต"
+            </div>
+            
+            <div class="basic-info">
+                <h4>ข้อมูลพื้นฐาน</h4>
+                <div class="info-item">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span>อายุ 22 ปี</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-mars"></i>
+                    <span>เพศชาย</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>จังหวัดอยุธยา</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>ชั้นปีที่ 4</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="card card-interests">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="card-title">ความสนใจ & ทักษะ<br><span>Interests & Skills</span></h3>
+                </div>
+                <div class="card-content">
+                    <div class="tags">
+                        <span class="tag">วิทยาการข้อมูล</span>
+                        <span class="tag">Cybersecurity</span>
+                        <span class="tag">AI & ML</span>
+                        <span class="tag">ปิงปอง</span>
+                    </div>
+                    <ul class="list-description">
+                        <li><strong>Data Science:</strong> มีความเชี่ยวชาญในระดับสูง </li>
+                        <li><strong>Cybersecurity:</strong> มีความเข้าใจดี </li>
+                        <li><strong>การใช้ AI:</strong> มีประสบการณ์การใช้งานสูง </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-schedule">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">กิจวัตรประจำวัน<br><span>Daily Schedule</span></h3>
+                </div>
+                <div class="card-content">
+                    <div class="timeline-item">
+                        <strong>เช้า:</strong> เดินทางถึงมหาวิทยาลัย, รับประทานอาหารเช้า, เข้าเรียน 
+                    </div>
+                    <div class="timeline-item">
+                        <strong>หลังเรียน:</strong> เล่นปิงปอง 1-2 ชั่วโมง, รับประทานอาหารเย็น, เดินทางกลับบ้าน 
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-tech">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="card-title">เทคโนโลยีที่ใช้<br><span>Technology Usage</span></h3>
+                </div>
+                <div class="card-content">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>โทรศัพท์มือถือ:</strong>
+                                ใช้ในการติดต่อสื่อสารเป็นหลัก แต่รู้สึกว่าฟังก์ชันบางอย่างของเครื่องใหม่ทำงานได้ไม่ดีเท่าเครื่องเก่า 
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-robot"></i>
+                            <div>
+                                <strong>AI Tools:</strong>
+                                ใช้สำหรับการค้นหาข้อมูลทั่วไปที่ไม่ต้องการการตัดสินใจที่ซับซ้อน เนื่องจากมีความรวดเร็วและสามารถสรุปข้อมูลได้ดี 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-problems">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="card-title">ปัญหาและอุปสรรค<br><span>Problems & Pain Points</span></h3>
+                </div>
+                <div class="card-content">
+                    <div class="pain-point">
+                        <i class="fas fa-building"></i>
+                        <strong>ตึกเรียนไม่มีลิฟต์:</strong>
+                        ทำให้การขึ้นลงตึกเป็นเรื่องลำบาก 
+                    </div>
+                    <div class="pain-point">
+                        <i class="fas fa-users"></i>
+                        <strong>ห้องเรียนคับแคบ:</strong>
+                        ห้องเรียนไม่เหมาะกับจำนวนนักศึกษา 160 คน ทำให้รู้สึกอึดอัด 
+                    </div>
+                    <div class="pain-point">
+                        <i class="fas fa-mobile-alt"></i>
+                        <strong>คุณภาพโทรศัพท์:</strong>
+                        โทรศัพท์เครื่องใหม่มีฟังก์ชันบางอย่างที่ด้อยกว่าเครื่องเก่าอย่างน่าประหลาดใจ 
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-goals">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">ความต้องการ<br><span>Needs & Goals</span></h3>
+                </div>
+                <div class="card-content">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>บริการจัดการตารางชีวิต:</strong>
+                                ต้องการระบบที่สามารถวิเคราะห์ข้อมูลการใช้ชีวิตและทักษะส่วนตัวเพื่อสร้างตารางชีวิตและเป้าหมายในลักษณะของ 'เควสในเกม' 
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile"></i>
+                            <div>
+                                <strong>โทรศัพท์คุณภาพสูง:</strong>
+                                ต้องการโทรศัพท์ที่มีคุณภาพวัสดุดี สัมผัสดี สเปคสูง และใช้งานง่าย 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-quotes">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <h3 class="card-title">คำกล่าว<br><span>Quotes</span></h3>
+                </div>
+                <div class="card-content">
+                    <div class="quote-item">
+                        "โทรศัพท์มือถือ เพราะใช้ในการติดต่อสื่อสารพูดคุยกับคนอื่น ๆ ได้ง่ายจำเป็นมาก ๆ" 
+                    </div>
+                    <div class="quote-item">
+                        "อยากได้บริการที่สามารถรับฟังการใช้ชีวิตและทักษะเฉพาะตัว และสามารถนำข้อมูลเหล่านี้ไปเจนเป็นตารางชีวิตและเป้าหมายที่จะทำในแต่ละวัน/รายสัปดาห์ แต่เราก็สามารถเลือกที่จะทำหรือไม่ทำได้ถ้ายกตัวอย่างง่าย ๆ ก็เหมือนเกมที่มีเควสประจำวันและรายสัปดาห์" 
+                    </div>
+                    <div class="quote-item">
+                        "ถ้าเป็นข้อมูลอย่างเดียวที่ไม่ได้เกี่ยวกับการตัดสินใจเล็ก ๆ น้อย ๆ จะใช้ AI ในการหาข้อมูล เพราะมันหาได้รวดเร็วและสรุปมาให้แล้วโดยที่เราไม่ต้องเสียเวลาหา" 
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title">การตัดสินใจ<br><span>Decision Making</span></h3>
+                </div>
+                <div class="card-content">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-search"></i>
+                            <div>
+                                <strong>การใช้ AI สำหรับข้อมูล:</strong>
+                                จะใช้ AI ในการหาข้อมูลที่ไม่เกี่ยวกับการตัดสินใจที่สำคัญ เนื่องจากรวดเร็วและสามารถสรุปข้อมูลได้ดี 
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-balance-scale"></i>
+                            <div>
+                                <strong>พิจารณาจากความจำเป็น:</strong>
+                                ตัดสินใจใช้บริการหรืออุปกรณ์ใหม่เมื่อรู้สึกว่าชีวิตประสบปัญหาหรือลำบากมากพอสมควร 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-interests">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="card-title">แรงจูงใจ<br><span>Motivation</span></h3>
+                </div>
+                <div class="card-content">
+                    <ul class="list-description">
+                        <li><strong>การเรียนรู้และพัฒนาตนเอง:</strong> เป็นแรงจูงใจที่สำคัญที่สุด </li>
+                        <li><strong>ความสะดวกสบายในการใช้ชีวิต:</strong> มีความสำคัญรองลงมา </li>
+                        <li><strong>สังคมและการคลายเครียด:</strong> เป็นส่วนหนึ่งที่ช่วยขับเคลื่อน </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-goals">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="card-title">ข้อเสนอแนะ<br><span>Suggestions</span></h3>
+                </div>
+                <div class="card-content">
+                    <div class="suggestion-box">
+                        <i class="fas fa-tint"></i>
+                        <strong>ระบบระบายน้ำมหาวิทยาลัย:</strong>
+                        เสนอให้มีอุโมงค์ระบายน้ำใต้มหาวิทยาลัยและระบบระบายน้ำที่มีประสิทธิภาพสูงสุด
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

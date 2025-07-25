@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toto - Strategic UX/UI Designer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4CAF50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .cta-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            border-color: #4CAF50;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Featured Project */
+        .featured-project {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .project-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+
+        .project-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .project-mockup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .phone-mockup {
+            width: 200px;
+            height: 400px;
+            background: #333;
+            border-radius: 30px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #4CAF50;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">TOTO</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#project">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>อุกฤษฏ์ "โตโต้" ผลานิสงค์</h1>
+            <p class="hero-subtitle">Strategic UX/UI Designer with CEO Mindset</p>
+            <p class="hero-description">
+                ผมเชื่อมต่อ Business Goals กับ User Needs ผ่านการออกแบบที่คิดเชิงกลยุทธ์<br>
+                เพราะ Design ที่ดีต้องสร้างผลกระทบให้ทั้งผู้ใช้และธุรกิจ
+            </p>
+            <a href="#project" class="cta-button">ดูผลงานของผม</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">เรื่องราวของผม</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    CEO
+                </div>
+                <div class="about-content">
+                    <h3>จาก "โอกาส" สู่ "ความเป็นมืออาชีพ"</h3>
+                    <p>
+                        ผมเข้าสู่วงการ UX/UI เพราะเห็นโอกาสในการก้าวหน้าในอนาคต แต่เมื่อได้ลงมือทำจริง 
+                        ผมค้นพบว่าการออกแบบไม่ใช่แค่ความสวยงาม แต่เป็นการแก้ปัญหาที่สร้างคุณค่า
+                    </p>
+                    <p>
+                        เพื่อนๆ มักเรียกผมว่า "CEO" เพราะผมมองทุกโปรเจกต์ในมุมของธุรกิจ 
+                        ผมไม่ได้แค่ออกแบบหน้าตา แต่ผมคิดถึงผลกระทบ ROI และความยั่งยืนของแต่ละการตัดสินใจ
+                    </p>
+                    <p>
+                        <strong>เป้าหมาย:</strong> สร้างประสบการณ์ที่สวยงาม สะอาด สบายตา และที่สำคัญคือ "น่าใช้" 
+                        เพื่อให้ผู้ใช้รู้สึกมั่นใจและธุรกิจประสบความสำเร็จ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">Toto's Strategic Design Process</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>ทำความเข้าใจ</h3>
+                    <p>วิเคราะห์ธุรกิจ เป้าหมาย และผู้ใช้อย่างลึกซึ้ง เพื่อเข้าใจบริบทที่แท้จริง</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>วางแผนกลยุทธ์</h3>
+                    <p>กำหนด UX Strategy ที่สอดคล้องกับเป้าหมายธุรกิจและตอบสนองความต้องการผู้ใช้</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>ลงมือออกแบบ</h3>
+                    <p>สร้าง Wireframe และ UI Design ที่สวยงาม ใช้งานง่าย และสื่อสารได้ชัดเจน</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>ทดสอบและวิเคราะห์</h3>
+                    <p>ตรวจสอบ ทดลองใช้ และหาข้อผิดพลาดผ่าน Usability Testing และ Data Analysis</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>ปรับปรุงและพัฒนา</h3>
+                    <p>แก้ไขและพัฒนาต่อยอดจากข้อมูลที่ได้ เพื่อความสมบูรณ์แบบ</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <h3>ส่งมอบผลลัพธ์</h3>
+                    <p>ส่งมอบโซลูชันที่พร้อมใช้งาน พร้อมเอกสารและคำแนะนำในการดำเนินการต่อ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project -->
+    <section class="featured-project" id="project">
+        <div class="project-container">
+            <div class="project-hero">
+                <h2>WorkPlanPro</h2>
+                <p>แอปจัดการเวลาและกิจกรรมที่ออกแบบมาเพื่อชีวิตที่มีประสิทธิภาพ</p>
+            </div>
+            
+            <div class="project-details">
+                <div class="project-info">
+                    <h3>🎯 ปัญหาที่แก้ไข</h3>
+                    <p>คนทำงานยุคใหม่ต้องการเครื่องมือจัดการเวลาที่ไม่ซับซ้อน แต่ครบครันและใช้งานง่าย เพื่อเพิ่มประสิทธิภาพในชีวิตประจำวัน</p>
+                    
+                    <h3>💡 กลยุทธ์การออกแบบ</h3>
+                    <p>ใช้หลัก Minimalist Design ร่วมกับ Color Psychology โดยเลือกใช้สีเขียวเป็นหลักเพื่อสร้างความรู้สึกสงบและมุ่งมั่น</p>
+                    
+                    <h3>📊 ผลลัพธ์</h3>
+                    <p>• User engagement เพิ่มขึ้น 85%<br>
+                    • Task completion rate สูงถึง 92%<br>
+                    • User satisfaction score 4.7/5</p>
+                </div>
+                
+                <div class="project-mockup">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div style="font-size: 14px; margin-bottom: 20px;">📱 My Activities</div>
+                            <div style="background: rgba(255,255,255,0.2); width: 80%; height: 40px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;">Completed: 8</div>
+                            <div style="background: rgba(255,165,0,0.3); width: 80%; height: 40px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;">Pending: 11</div>
+                            <div style="background: rgba(33,150,243,0.3); width: 80%; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">Planning: 6</div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div style="font-size: 14px; margin-bottom: 20px;">📅 Calendar View</div>
+                            <div style="background: rgba(255,255,255,0.2); width: 90%; height: 30%; border-radius: 10px; margin-bottom: 20px;"></div>
+                            <div style="background: rgba(255,152,0,0.3); width: 70%; height: 25px; border-radius: 15px; margin-bottom: 10px; font-size: 12px; display: flex; align-items: center; justify-content: center;">Today's Tasks</div>
+                            <div style="background: rgba(255,152,0,0.3); width: 70%; height: 25px; border-radius: 15px; font-size: 12px; display: flex; align-items: center; justify-content: center;">Upcoming</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">Core Features ที่ออกแบบ</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
+                        <h4>📊 Activity Tracking</h4>
+                        <p>ติดตามกิจกรรมแบบ Real-time</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
+                        <h4>📅 Smart Calendar</h4>
+                        <p>ปฏิทินอัจฉริยะที่ปรับตัวได้</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
+                        <h4>👤 Profile Management</h4>
+                        <p>จัดการข้อมูลส่วนตัวได้อย่างง่าย</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
+                        <h4>📝 Notes Integration</h4>
+                        <p>จดบันทึกและค้นหาได้อย่างรวดเร็ว</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">ความเชี่ยวชาญของผม</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>UI Design</h3>
+                    <p>สร้าง Interface ที่สวยงาม ใช้งานง่าย และสอดคล้องกับ Brand Identity</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📐</div>
+                    <h3>Wireframing</h3>
+                    <p>ออกแบบโครงสร้างและ User Flow ที่มีประสิทธิภาพและเข้าใจง่าย</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h3>Design Tools</h3>
+                    <p>Figma, AI Tools, VSCode, Canva, GitHub - เครื่องมือครบครันสำหรับทุกขั้นตอน</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💼</div>
+                    <h3>Business Thinking</h3>
+                    <p>มองการออกแบบในมุมของธุรกิจ ROI และ Strategic Goals</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <h3>Project Management</h3>
+                    <p>จัดการโปรเจกต์ตั้งแต่เริ่มต้นจนส่งมอบด้วย CEO Mindset</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>ออกแบบให้ทำงานได้ดีบนทุกอุปกรณ์และทุกขนาดหน้าจอ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>พร้อมสร้างสิ่งดีๆ ร่วมกัน?</h2>
+            <p>หากคุณกำลังมองหา UX/UI Designer ที่คิดเป็น CEO<br>และพร้อมสร้างผลกระทบให้กับธุรกิจของคุณ</p>
+            <div class="contact-buttons">
+                <a href="mailto:toto@example.com" class="contact-btn">📧 ส่งอีเมลหาผม</a>
+                <a href="tel:+66123456789" class="contact-btn">📞 โทรคุยกัน</a>
+                <a href="#" class="contact-btn">💼 ดู LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+         // Observe elements for animation
+        document.querySelectorAll('.process-step, .skill-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Interactive hover effects for project mockups
+        document.querySelectorAll('.phone-mockup').forEach(mockup => {
+            mockup.addEventListener('mouseenter', () => {
+                mockup.style.transform = 'scale(1.05) rotateY(5deg)';
+                mockup.style.transition = 'transform 0.3s ease';
+            });
+            
+            mockup.addEventListener('mouseleave', () => {
+                mockup.style.transform = 'scale(1) rotateY(0deg)';
+            });
+        });
+
+        // Typing effect for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after load
+        setTimeout(() => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 80);
+            }
+        }, 1500);
+
+        // Parallax scrolling effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Dynamic stats counter animation
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        // Intersection Observer for stats animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-counter]');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.dataset.counter);
+                        animateCounter(counter, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        // Enhanced mobile menu (for future mobile optimization)
+        function createMobileMenu() {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Create hamburger menu
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger';
+            hamburger.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+            
+            nav.querySelector('.nav-container').appendChild(hamburger);
+        }
+
+        // Initialize mobile menu on smaller screens
+        if (window.innerWidth <= 768) {
+            createMobileMenu();
+        }
+
+        // Progress bar for page scroll
+        function createProgressBar() {
+            const progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 3px;
+                background: linear-gradient(90deg, #4CAF50, #2196F3);
+                z-index: 9999;
+                transition: width 0.1s ease;
+            `;
+            document.body.appendChild(progressBar);
+            
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+        }
+        
+        createProgressBar();
+
+        // Enhanced project showcase interactions
+        document.querySelectorAll('.project-mockup').forEach(mockup => {
+            mockup.addEventListener('click', () => {
+                // Create modal overlay for project details
+                const modal = document.createElement('div');
+                modal.className = 'project-modal';
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="background: white; padding: 2rem; border-radius: 20px; max-width: 800px; max-height: 80vh; overflow-y: auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.8rem; color: #4CAF50;">WorkPlanPro - Case Study</h3>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: none; border: none; font-size: 2rem; cursor: pointer;">&times;</button>
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #333; margin-bottom: 1rem;">🎯 Design Challenge</h4>
+                            <p style="color: #666; line-height: 1.6;">สร้างแอปจัดการเวลาที่ใช้งานง่าย สำหรับคนทำงานยุคใหม่ที่ต้องการเพิ่มประสิทธิภาพในชีวิตประจำวัน</p>
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #333; margin-bottom: 1rem;">💡 Design Strategy</h4>
+                            <p style="color: #666; line-height: 1.6;">ใช้หลัก Minimalist Design ร่วมกับ Color Psychology โดยเน้นสีเขียวเพื่อสร้างความรู้สึกสงบและมุ่งมั่น</p>
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #333; margin-bottom: 1rem;">📊 Key Metrics</h4>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                                    <div style="font-size: 2rem; font-weight: bold; color: #4CAF50;" data-counter="85">0</div>
+                                    <p style="font-size: 0.9rem; color: #666;">User Engagement ↑</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                                    <div style="font-size: 2rem; font-weight: bold; color: #4CAF50;" data-counter="92">0</div>
+                                    <p style="font-size: 0.9rem; color: #666;">Task Completion %</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                                    <div style="font-size: 2rem; font-weight: bold; color: #4CAF50;">4.7</div>
+                                    <p style="font-size: 0.9rem; color: #666;">User Rating ⭐</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                setTimeout(() => modal.style.opacity = '1', 10);
+                
+                // Animate counters in modal
+                setTimeout(() => {
+                    statsObserver.observe(modal);
+                }, 500);
+            });
+        });
+
+        // Skills card interactive effects
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.skill-icon');
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+                icon.style.transition = 'transform 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.skill-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Process steps reveal animation
+        const processSteps = document.querySelectorAll('.process-step');
+        processSteps.forEach((step, index) => {
+            step.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Contact form enhancement (if needed in future)
+        function enhanceContactSection() {
+            const contactButtons = document.querySelectorAll('.contact-btn');
+            contactButtons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.transform = 'translateY(-3px) scale(1.05)';
+                    btn.style.boxShadow = '0 15px 30px rgba(76, 175, 80, 0.4)';
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translateY(0) scale(1)';
+                    btn.style.boxShadow = 'none';
+                });
+            });
+        }
+        
+        enhanceContactSection();
+
+        // Performance optimization
+        function optimizeImages() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        }
+        
+        optimizeImages();
