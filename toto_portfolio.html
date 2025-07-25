@@ -27,8 +27,8 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e3eafc 100%);
         }
 
         nav.scrolled {
@@ -146,7 +146,7 @@
         /* About Section */
         .about {
             padding: 5rem 2rem;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #e3eafc 0%, #f8f9fa 100%);
         }
 
         .container {
@@ -189,15 +189,15 @@
         }
 
         .about-content p {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2196F3;
+        }
+        .about-content p {
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            color: #666;
+            color: #222;
         }
-
-        /* Process Section */
-        .process {
-            padding: 5rem 2rem;
-            background: white;
         }
 
         .process-grid {
@@ -208,12 +208,13 @@
         }
 
         .process-step {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.85);
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
             transition: transform 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #e3eafc;
+            box-shadow: 0 4px 16px rgba(76,175,80,0.07);
         }
 
         .process-step:hover {
@@ -224,7 +225,7 @@
         .step-number {
             width: 60px;
             height: 60px;
-            background: #4CAF50;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -233,6 +234,7 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1rem;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.12);
         }
 
         .process-step h3 {
@@ -244,8 +246,8 @@
         /* Featured Project */
         .featured-project {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #764ba2 0%, #2196F3 100%);
+            color: #fff;
         }
 
         .project-container {
@@ -369,14 +371,15 @@
         }
 
         .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.8;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #f8f9fa;
         }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
+        .project-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #e3eafc;
+        }
             gap: 2rem;
             flex-wrap: wrap;
         }
