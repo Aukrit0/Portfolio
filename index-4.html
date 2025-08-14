@@ -59,7 +59,7 @@
             --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* Dark theme colors */
+        /* แก้ไขปัญหาสีข้อความใน dark theme ที่มองไม่เห็น */
         [data-theme="dark"] {
             --text-primary: #f7fafc;
             --text-secondary: #e2e8f0;
@@ -72,17 +72,32 @@
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        /* Ensure text visibility in all themes */
-        h1, h2, h3, h4, h5, h6, p, span, div {
-            color: var(--text-primary);
+        /* ป้องกันข้อความสีขาวบนพื้นขาว */
+        .timeline-content h3,
+        .timeline-content h4,
+        .timeline-content p {
+            color: var(--text-primary) !important;
         }
 
-        .text-secondary {
+        .card h3,
+        .card h4,
+        .card p {
+            color: var(--text-primary) !important;
+        }
+
+        /* แก้ไขสี text ในส่วนต่างๆ */
+        .project-content h3 {
+            color: var(--text-primary) !important;
+        }
+
+        .project-content p {
             color: var(--text-secondary) !important;
         }
 
-        .text-muted {
-            color: var(--text-muted) !important;
+        .about-content h3,
+        .about-content p,
+        .about-content h4 {
+            color: var(--text-primary) !important;
         }
 
         html {
@@ -98,6 +113,7 @@
             font-size: 16px;
         }
 
+        /* ลบโค้ดที่ทำให้เกิดแถบสีขาวและข้อความซ้อนทับ */
         /* Enhanced Scroll Progress */
         .scroll-progress {
             position: fixed;
@@ -133,7 +149,7 @@
             50% { opacity: 1; }
         }
 
-        /* Advanced Particle System */
+        /* Floating Particles Background */
         .particles {
             position: fixed;
             top: 0;
@@ -147,6 +163,9 @@
 
         .particle {
             position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
             border-radius: 50%;
             opacity: 0.1;
             animation: float-particle 20s linear infinite;
@@ -162,54 +181,20 @@
             animation-duration: 30s;
         }
 
-        .particle:nth-child(5n) {
-            background: var(--primary);
-            animation-duration: 35s;
-        }
-
-        /* Morphing particles */
-        .particle-morph {
-            animation: morphParticle 15s ease-in-out infinite;
-        }
-
         @keyframes float-particle {
             0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg) scale(0.5);
-                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.1;
             }
             10% {
                 opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                transform: translateY(50vh) translateX(20px) rotate(180deg) scale(1.2);
-                opacity: 0.6;
             }
             90% {
                 opacity: 0.3;
             }
             100% {
-                transform: translateY(-100vh) translateX(-20px) rotate(360deg) scale(0.5);
+                transform: translateY(-100vh) rotate(360deg);
                 opacity: 0;
-            }
-        }
-
-        @keyframes morphParticle {
-            0%, 100% { 
-                border-radius: 50%; 
-                transform: scale(1);
-            }
-            25% { 
-                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-                transform: scale(1.2);
-            }
-            50% { 
-                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-                transform: scale(0.8);
-            }
-            75% { 
-                border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-                transform: scale(1.1);
             }
         }
 
@@ -376,7 +361,7 @@
             box-shadow: var(--shadow-glow);
         }
 
-        /* Advanced Hero Animations */
+        /* Magnetic Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -390,24 +375,11 @@
             animation: meshAnimation 15s ease-in-out infinite;
         }
 
-        /* Advanced mesh animation */
         @keyframes meshAnimation {
-            0%, 100% { 
-                background-position: 0% 50%; 
-                filter: hue-rotate(0deg);
-            }
-            25% { 
-                background-position: 100% 50%; 
-                filter: hue-rotate(90deg);
-            }
-            50% { 
-                background-position: 100% 100%; 
-                filter: hue-rotate(180deg);
-            }
-            75% { 
-                background-position: 0% 100%; 
-                filter: hue-rotate(270deg);
-            }
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
         }
 
         .hero::before {
@@ -419,36 +391,6 @@
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             opacity: 0.3;
-            animation: grid-pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes grid-pulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.1; transform: scale(1.05); }
-        }
-
-        /* Enhanced text animations */
-        .hero-title {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            color: white;
-            opacity: 0;
-            animation: slideUpStagger 1s var(--ease-out-expo) 0.4s forwards;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            letter-spacing: -0.02em;
-            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideUpStagger 1s var(--ease-out-expo) 0.4s forwards, 
-                       shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
 
         .hero-content {
@@ -456,6 +398,49 @@
             padding: 2rem;
             z-index: 2;
             position: relative;
+        }
+
+        .hero-avatar {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            padding: 6px;
+            animation: heroFloat 4s ease-in-out infinite;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            opacity: 0.3;
+            animation: pulseGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(-1deg); }
+            75% { transform: translateY(-15px) rotate(0.5deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.1; }
         }
 
         .hero-greeting {
@@ -519,7 +504,7 @@
             animation: slideUpStagger 1s var(--ease-out-expo) 1s forwards;
         }
 
-        /* Enhanced Button Animations */
+        /* Magnetic Buttons */
         .btn {
             padding: 1.2rem 2.5rem;
             border: none;
@@ -536,7 +521,6 @@
             font-size: 1.1rem;
             text-transform: none;
             letter-spacing: 0.02em;
-            transform-style: preserve-3d;
         }
 
         .btn::before {
@@ -546,20 +530,12 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.6s;
-            z-index: 1;
         }
 
         .btn:hover::before {
             left: 100%;
-        }
-
-        /* 3D button effect */
-        .btn:hover {
-            transform: translateY(-6px) rotateX(15deg) scale(1.05);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3), 
-                       0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary {
@@ -570,8 +546,8 @@
         }
 
         .btn-primary:hover {
-            box-shadow: var(--shadow-xl), var(--shadow-glow), 
-                       0 20px 40px rgba(102, 126, 234, 0.4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
         }
 
         .btn-secondary {
@@ -583,11 +559,11 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px) scale(1.05);
             border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
         }
 
-        /* Section styling */
+        /* แก้ไขปัญหาแถบสีขาวระหว่างส่วน */
         .section {
             padding: 6rem 2rem;
             position: relative;
@@ -603,6 +579,28 @@
             background: var(--bg-primary);
         }
 
+        /* ลบ separator ที่ทำให้เกิดแถบสีขาว */
+        .section::after {
+            display: none;
+        }
+
+        /* Hero section ต่อเนื่องกับส่วนถัดไป */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-mesh);
+            background-size: 200% 200%;
+            animation: meshAnimation 15s ease-in-out infinite;
+            margin: 0;
+            padding: 0 2rem;
+        }
+
+        /* ให้ส่วน About มีพื้นหลังที่ต่อเนื่อง */
         #about {
             background: linear-gradient(180deg, rgba(102, 126, 234, 0.1) 0%, var(--bg-secondary) 20%);
             padding-top: 6rem;
@@ -639,7 +637,7 @@
             box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
         }
 
-        /* Advanced Card Animations */
+        /* Advanced Cards with Hover Effects */
         .card {
             background: var(--surface);
             backdrop-filter: blur(24px);
@@ -651,7 +649,6 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            transform-style: preserve-3d;
         }
 
         .card::before {
@@ -676,13 +673,6 @@
             z-index: -1;
         }
 
-        /* 3D Tilt Effect */
-        .card:hover {
-            transform: translateY(-12px) rotateX(5deg) rotateY(5deg) scale(1.02);
-            box-shadow: var(--shadow-xl), var(--shadow-glow), 0 40px 80px rgba(102, 126, 234, 0.2);
-            border-color: var(--primary);
-        }
-
         .card:hover::before {
             transform: scaleX(1);
         }
@@ -691,97 +681,13 @@
             opacity: 0.05;
         }
 
-        /* Staggered reveal animation */
-        .reveal-card {
-            opacity: 0;
-            transform: translateY(60px) rotateX(-15deg);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            border-color: var(--primary);
         }
 
-        .reveal-card.revealed {
-            opacity: 1;
-            transform: translateY(0) rotateX(0deg);
-        }
-
-        /* Advanced Text Animations */
-        .text-reveal {
-            overflow: hidden;
-        }
-
-        .text-reveal .char {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(100px) rotateX(-90deg);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-origin: center bottom;
-        }
-
-        .text-reveal.animate .char {
-            opacity: 1;
-            transform: translateY(0) rotateX(0deg);
-        }
-
-        /* Floating Elements */
-        .floating-element {
-            animation: advanced-float 6s ease-in-out infinite;
-        }
-
-        @keyframes advanced-float {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg) scale(1);
-            }
-            25% { 
-                transform: translateY(-10px) rotate(2deg) scale(1.02);
-            }
-            50% { 
-                transform: translateY(-20px) rotate(0deg) scale(1.05);
-            }
-            75% { 
-                transform: translateY(-10px) rotate(-2deg) scale(1.02);
-            }
-        }
-
-        /* Wave Animation for Backgrounds */
-        .wave-bg {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wave-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(102, 126, 234, 0.05), 
-                transparent
-            );
-            animation: wave-move 3s ease-in-out infinite;
-        }
-
-        @keyframes wave-move {
-            0% { left: -100%; }
-            50% { left: 0%; }
-            100% { left: 100%; }
-        }
-
-        /* Pulsing Glow Effect */
-        .pulse-glow {
-            animation: pulse-glow 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(102, 126, 234, 0.6), 
-                           0 0 60px rgba(102, 126, 234, 0.4);
-            }
-        }
+        /* Grid Layouts with Auto-fit */
         .grid {
             display: grid;
             gap: 2.5rem;
@@ -800,23 +706,22 @@
         }
 
         /* About Section with Magnetic Elements */
-        .about-content {
+        .about-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 4rem;
-            align-items: start;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            align-items: center;
         }
 
-        .profile-section {
+        .profile-card {
             text-align: center;
-            position: sticky;
-            top: 120px;
+            position: relative;
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 1.5rem;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 2rem;
             border-radius: 50%;
             background: var(--gradient-primary);
             padding: 6px;
@@ -863,60 +768,20 @@
             transform: scale(1.05);
         }
 
-        .info-main {
-            background: var(--surface);
-            backdrop-filter: blur(24px);
-            border-radius: var(--border-radius-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--glass-border);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .info-item {
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary);
-            transition: var(--transition);
-        }
-
-        .info-item:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .info-item h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .info-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
         .personality-tags {
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .tag {
             background: var(--gradient-primary);
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             border-radius: var(--border-radius-lg);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: var(--spring);
             position: relative;
@@ -930,22 +795,15 @@
             background: var(--gradient-secondary);
             opacity: 0;
             transition: var(--transition);
-            z-index: 0;
         }
 
         .tag:hover::before {
-            opacity: 0.8;
+            opacity: 1;
         }
 
         .tag:hover {
-            transform: scale(1.05) rotate(1deg);
+            transform: scale(1.1) rotate(2deg);
             box-shadow: var(--shadow-lg);
-        }
-
-        /* Ensure text stays visible on hover */
-        .tag > * {
-            position: relative;
-            z-index: 1;
         }
 
         /* Interactive Project Cards */
@@ -1034,47 +892,54 @@
             transform: scale(1.05);
         }
 
-        /* Skills Section - Simplified without progress bars */
+        /* Skills with Advanced Progress Bars */
+        /* Skills Section Layout */
         .skill-card {
             text-align: center;
             height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
-        }
-
-        .skill-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            transition: var(--spring);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .skill-card:hover .skill-icon {
+        }d:hover .skill-icon {
             transform: scale(1.1) rotate(10deg);
         }
 
-        .skill-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+        .skill-level {
+            background: var(--bg-tertiary);
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .skill-card p {
-            color: var(--text-secondary);
-            flex-grow: 1;
-            line-height: 1.6;
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 6px;
+            transition: width 2s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Timeline Layout */
+        .skill-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: skillShimmer 2s infinite;
+        }
+
+        @keyframes skillShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        /* Fixed Timeline Layout - เส้นอยู่ด้านหลัง */
         .timeline-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -1157,29 +1022,12 @@
             position: relative;
         }
 
+        /* Enhanced card spacing */
         .timeline-content .card {
             padding: 2.5rem;
             margin: 0;
             box-shadow: var(--shadow-xl);
             border: 1px solid var(--glass-border);
-        }
-
-        .timeline-content h3 {
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .timeline-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .timeline-content p {
-            line-height: 1.7;
-            color: var(--text-secondary);
         }
 
         /* Enhanced Contact Section */
@@ -1278,16 +1126,6 @@
             transform: scale(1.2) rotate(10deg);
         }
 
-        .contact-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .contact-card p {
-            color: var(--text-secondary);
-        }
-
         /* Enhanced Footer */
         .footer {
             background: var(--text-primary);
@@ -1296,17 +1134,6 @@
             padding: 4rem 2rem;
             position: relative;
             overflow: hidden;
-        }
-
-        /* Fix footer text visibility in dark mode */
-        [data-theme="dark"] .footer {
-            background: #1a202c;
-            color: white;
-        }
-
-        [data-theme="light"] .footer {
-            background: #2d3748;
-            color: white;
         }
 
         .footer::before {
@@ -1318,14 +1145,6 @@
             bottom: 0;
             background: var(--gradient-mesh);
             opacity: 0.1;
-        }
-
-        .footer p {
-            color: white !important;
-        }
-
-        .footer p:last-child {
-            color: rgba(255,255,255,0.8) !important;
         }
 
         .social-links {
@@ -1398,7 +1217,7 @@
             box-shadow: var(--shadow-xl), var(--shadow-glow);
         }
 
-        /* Responsive Timeline */
+        /* Responsive Timeline - แก้ไขให้แสดงผลดีบนมือถือ */
         @media (max-width: 1024px) {
             .timeline-line {
                 left: 40px;
@@ -1426,15 +1245,6 @@
 
             .timeline-container {
                 padding: 2rem 0;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .profile-section {
-                position: static;
             }
         }
 
@@ -1468,6 +1278,7 @@
                 justify-content: center;
             }
 
+            .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -1497,10 +1308,6 @@
 
             .timeline-content .card {
                 padding: 1.5rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -1772,45 +1579,6 @@
             color: white;
         }
 
-        /* Magnetic Cursor Effect - User Friendly Version */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-            transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
-            opacity: 0;
-        }
-
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.25s ease;
-            opacity: 0;
-        }
-
-        /* Show cursor only on desktop */
-        @media (min-width: 1024px) {
-            .cursor,
-            .cursor-follower {
-                opacity: 1;
-            }
-        }
-
-        /* Gentle magnetic effect for interactive elements */
-        .magnetic {
-            transition: transform 0.3s ease;
-        }
-
         /* Focus Styles */
         *:focus {
             outline: 3px solid var(--primary);
@@ -1822,6 +1590,39 @@
         .card:focus {
             outline: none;
             box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Magnetic Cursor Effect */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            opacity: 0;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s ease;
+            opacity: 0;
+        }
+
+        @media (min-width: 769px) {
+            .cursor,
+            .cursor-follower {
+                opacity: 1;
+            }
         }
 
         /* Tooltip Enhancement */
@@ -1926,7 +1727,7 @@
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Custom Cursor -->
+    <!-- Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
 
@@ -1963,7 +1764,7 @@
             <h1 class="hero-title">อุกฤษฏ์ ผลานิสงค์</h1>
             <p class="hero-subtitle">UX/UI Designer with CEO Mindset</p>
             <p class="hero-description">
-                "นักออกแบบ UX/UI ที่กำลังเติบโตและเรียนรู้อยู่เสมอ มุ่งเน้นการสร้างสรรค์ผลงานที่ใช้งานง่ายและตอบโจทย์ผู้ใช้จริง ด้วยการใส่ใจรายละเอียดและแนวคิดที่เรียบง่ายแต่มีประสิทธิภาพ"
+                "นักออกแบบที่มีวิสัยทัศน์ในการแปลงปัญหาซับซ้อนให้เป็นโซลูชันที่สวยงาม ใช้งานง่าย และตอบโจทย์ผู้ใช้อย่างแท้จริง ด้วยความคิดแบบผู้นำและแนวทางที่เป็นนวัตกรรม พร้อมสร้างประสบการณ์ที่ไม่มีใครลืม"
             </p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">
@@ -1982,77 +1783,66 @@
     <section id="about" class="section fade-in">
         <div class="container">
             <h2 class="section-title">เกี่ยวกับผม</h2>
-            <div class="about-content">
-                <div class="profile-section">
+            <div class="about-grid">
+                <div class="profile-card">
                     <div class="profile-image">
-                        <img src="img/profile-me.jpg" alt="อุกฤษฏ์ ผลานิสงค์" loading="lazy">
+                        <img src="img\profile-me.jpg" alt="อุกฤษฏ์ ผลานิสงค์" loading="lazy">
                     </div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text-primary);">โตโต้</h3>
-                    <p class="text-secondary" style="margin-bottom: 1.5rem;">UX/UI Designer</p>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">โตโต้</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">UX/UI Designer</p>
                     <div class="personality-tags">
-                        <span class="tag">ชอบเรียนรู้</span>
-                        <span class="tag">ใจเย็น</span>
-                        <span class="tag">เป็นมิตร</span>
-                        <span class="tag">มุ่งมั่น</span>
-                        <span class="tag">ใส่ใจรายละเอียด</span>
+                        <span class="tag">CEO Mindset</span>
+                        <span class="tag">Visionary</span>
+                        <span class="tag">Strategic</span>
+                        <span class="tag">Professional</span>
+                        <span class="tag">Friendly</span>
                     </div>
                 </div>
-                
-                <div class="info-main">
-                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-primary);">
-                        นักออกแบบ UX/UI ที่หลงใหลในการเรียนรู้และพัฒนาทักษะใหม่ๆ อยู่เสมอ
-                    </h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
-                        ผมเป็นคนที่ชอบเรียนรู้สิ่งใหม่และมองหาโอกาสในการพัฒนาตัวเองอยู่เสมอ 
-                        เป้าหมายของผมคือการสร้างผลงานที่มีคุณภาพและเป็นประโยชน์จริงต่อผู้ใช้
-                        ผมใส่ใจในรายละเอียดและพยายามทำความเข้าใจความต้องการของผู้ใช้ก่อนเริ่มออกแบบ
+                <div class="about-content card glass-card">
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">UX/UI Designer ที่เชื่อว่าการออกแบบคือการแก้ปัญหาและสร้างประสบการณ์ที่ดีที่สุดให้ผู้ใช้</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        จุดเริ่มต้นของผมคือการเห็นโอกาสในการก้าวหน้าในอนาคต
+                        ผมอยากให้งานของผมสะท้อนความเป็นมืออาชีพ มีความคิดสร้างสรรค์ และเป็นมิตรกับผู้ใช้
+                        บุคลิกที่เพื่อนมักใช้บอกว่าเป็นผม: <strong>CEO, Professional, Friendly</strong>
                     </p>
                     
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <h4>🛠️ เครื่องมือที่ใช้หลัก</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">🛠️ เครื่องมือที่ใช้หลัก</h4>
                             <p>Figma, AI Tools, VSCode, Canva, GitHub</p>
                         </div>
-                        <div class="info-item">
-                            <h4>❤️ งานที่ชอบ</h4>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">❤️ งานที่ชอบ</h4>
                             <p>Wireframe และ UI Design</p>
                         </div>
-                        <div class="info-item">
-                            <h4>🎨 สไตล์ UI</h4>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">🎨 สไตล์ UI</h4>
                             <p>Modern, Clean & User-Friendly</p>
                         </div>
-                        <div class="info-item">
-                            <h4>🌈 Color Palette</h4>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">🌈 Color Palette</h4>
                             <p>Modern Blue + Pastel Tones</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>🎓 การศึกษา</h4>
-                            <p>Bangkok University - Computer Science (IT Innovation)</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>📍 ที่อยู่</h4>
-                            <p>ปทุมธานี, ประเทศไทย</p>
                         </div>
                     </div>
                     
-                    <div style="margin-top: 2rem;">
-                        <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">🎯 เป้าหมายที่กำลังมุ่งหา</h4>
+                    <div>
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">🚀 เป้าหมายและการพัฒนาต่อในอนาคต</h4>
                         <div style="display: grid; gap: 0.75rem;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
-                                <span style="color: var(--text-secondary);">เรียนรู้เครื่องมือใหม่ๆ เช่น Adobe XD, Framer และ Webflow</span>
+                                <span>พัฒนาทักษะด้าน UX Research และ Data-driven Design</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
-                                <span style="color: var(--text-secondary);">ฝึกทำ UX Research และ User Testing อย่างเป็นระบบ</span>
+                                <span>เรียนรู้เทคโนโลยีใหม่ ๆ เช่น AI, Web Animation, Accessibility</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
-                                <span style="color: var(--text-secondary);">สร้างผลงานที่หลากหลายและมีความท้าทาย</span>
+                                <span>สร้างผลงานที่มี Impact ต่อผู้ใช้และสังคม</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
-                                <span style="color: var(--text-secondary);">หาโอกาสร่วมงานและเรียนรู้จากผู้เชี่ยวชาญ</span>
+                                <span>ขยายเครือข่ายและร่วมงานกับทีมระดับสากล</span>
                             </div>
                         </div>
                     </div>
@@ -2066,53 +1856,7 @@
         <div class="container">
             <h2 class="section-title">ผลงานที่ภูมิใจ</h2>
             <div class="grid grid-3 stagger-children">
-                <!-- Project 1: WorkPlanPro -->
                 <div class="card project-card neon-glow" onclick="openModal('project1')">
-                    <div class="project-image">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>WorkPlanPro</h3>
-                        <p>
-                            แอปพลิเคชันจัดตารางเวลาส่วนตัวที่ผมพัฒนาขึ้นเพื่อช่วยในการจัดระเบียบกิจกรรมประจำวัน เน้นการออกแบบ UI ที่เรียบง่ายและใช้งานง่าย เป็นโครงการที่ได้ฝึกทักษะ UX Research และ User Testing
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Flutter</span>
-                            <span class="project-tag">Figma</span>
-                            <span class="project-tag">UX Research</span>
-                        </div>
-                        <button class="btn btn-primary" onclick="openModal('project1')">
-                            <i class="fas fa-eye"></i>
-                            ดูรายละเอียด
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 2: Lipsters Website -->
-                <div class="card project-card" onclick="openModal('project2')">
-                    <div class="project-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Lipsters Website (HTML/CSS)</h3>
-                        <p>
-                            เว็บไซต์พอร์ตโฟลิโอที่พัฒนาด้วย HTML, CSS และ JavaScript โดยเน้นการออกแบบที่ Modern และ Responsive รวมถึงการใช้ Animation และ Interactive Elements เพื่อสร้างประสบการณ์ที่น่าประทับใจ
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">Responsive</span>
-                        </div>
-                        <a href="https://lipster.onrender.com/home.html" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-external-link-alt"></i>
-                            ดูเว็บไซต์
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Lipsters Design -->
-                <div class="card project-card" onclick="openModal('project3')">
                     <div class="project-image">
                         <i class="fas fa-palette"></i>
                     </div>
@@ -2132,6 +1876,48 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="card project-card" onclick="openModal('project2')">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Prototype App Diary</h3>
+                        <p>
+                            การออกแบบแอปพลิเคชันไดอารี่ที่ช่วยให้ผู้ใช้สามารถบันทึกความทรงจำและกิจกรรมประจำวันได้อย่างง่ายดาย โดยเน้นการออกแบบ UI ที่เรียบง่ายและใช้งานสะดวก
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">.NET</span>
+                            <span class="project-tag">Mobile UI</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('project2')">
+                            <i class="fas fa-eye"></i>
+                            ดูรายละเอียด
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card project-card" onclick="openModal('project3')">
+                    <div class="project-image">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>WorkPlanPro</h3>
+                        <p>
+                            แอปพลิเคชันที่ทำขึ้นมาเพื่อแก้ปัญหาในการจัดตารางเวลาและกิจกรรมต่างๆในชีวิตประจำวัน ด้วยการออกแบบ UI ที่ใช้งานง่าย และ UX ที่ช่วยให้ผู้ใช้จัดการเวลาได้อย่างมีประสิทธิภาพ
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">UX Research</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('project3')">
+                            <i class="fas fa-eye"></i>
+                            ดูรายละเอียด
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2145,48 +1931,72 @@
                     <div class="skill-icon">
                         <i class="fab fa-figma"></i>
                     </div>
-                    <h3>Figma</h3>
-                    <p>เครื่องมือหลักในการออกแบบ UI/UX, Prototyping และ Collaboration ที่ช่วยให้การทำงานเป็นทีมมีประสิทธิภาพและสร้างผลงานที่มีคุณภาพ</p>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Figma</h3>
+                    <p style="flex-grow: 1;">เครื่องมือหลักในการออกแบบ UI/UX, Prototyping และ Collaboration</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-width="90" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.75rem; font-weight: 700; color: var(--primary); font-size: 1.1rem;">90%</div>
                 </div>
 
                 <div class="card skill-card">
                     <div class="skill-icon">
                         <i class="fab fa-html5"></i>
                     </div>
-                    <h3>HTML & CSS</h3>
-                    <p>พื้นฐานการพัฒนาเว็บไซต์และการ implement design ให้เป็นผลงานจริงที่ใช้งานได้และมีความสวยงาม</p>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">HTML & CSS</h3>
+                    <p style="flex-grow: 1;">พื้นฐานการพัฒนาเว็บไซต์และการ implement design</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-width="85" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.75rem; font-weight: 700; color: var(--primary); font-size: 1.1rem;">85%</div>
                 </div>
 
                 <div class="card skill-card">
                     <div class="skill-icon">
                         <i class="fab fa-python"></i>
                     </div>
-                    <h3>Python</h3>
-                    <p>Programming language สำหรับ automation และ data analysis ที่ช่วยในการวิเคราะห์ข้อมูลผู้ใช้และปรับปรุงผลงาน</p>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Python</h3>
+                    <p style="flex-grow: 1;">Programming language สำหรับ automation และ data analysis</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-width="75" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.75rem; font-weight: 700; color: var(--primary); font-size: 1.1rem;">75%</div>
                 </div>
 
                 <div class="card skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3>.NET</h3>
-                    <p>Framework สำหรับการพัฒนาแอปพลิเคชันที่มีประสิทธิภาพและความเสถียรสูง รองรับการทำงานแบบ Cross-platform</p>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">.NET</h3>
+                    <p style="flex-grow: 1;">Framework สำหรับการพัฒนาแอปพลิเคชัน</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-width="70" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.75rem; font-weight: 700; color: var(--primary); font-size: 1.1rem;">70%</div>
                 </div>
 
                 <div class="card skill-card">
                     <div class="skill-icon">
                         <i class="fas fa-paintbrush"></i>
                     </div>
-                    <h3>Canva</h3>
-                    <p>เครื่องมือในการสร้าง graphic design และ presentation ที่ช่วยให้การสื่อสารและนำเสนอผลงานมีประสิทธิภาพ</p>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Canva</h3>
+                    <p style="flex-grow: 1;">เครื่องมือในการสร้าง graphic design และ presentation</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-width="80" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.75rem; font-weight: 700; color: var(--primary); font-size: 1.1rem;">80%</div>
                 </div>
 
                 <div class="card skill-card">
                     <div class="skill-icon">
                         <i class="fab fa-github"></i>
                     </div>
-                    <h3>GitHub</h3>
-                    <p>Version control และ collaboration platform สำหรับการจัดการโค้ดและการทำงานร่วมกันในทีม</p>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">GitHub</h3>
+                    <p style="flex-grow: 1;">Version control และ collaboration platform</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-width="75" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.75rem; font-weight: 700; color: var(--primary); font-size: 1.1rem;">75%</div>
                 </div>
             </div>
         </div>
@@ -2203,12 +2013,10 @@
                     <div class="timeline-dot">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <div class="timeline-content">
-                        <div class="card glass-card">
-                            <h3>1. Empathize</h3>
-                            <h4>ทำความเข้าใจผู้ใช้</h4>
-                            <p>ศึกษาความต้องการและ Pain Point ของผู้ใช้ เก็บข้อมูลเชิงลึกเพื่อเข้าใจปัญหาอย่างแท้จริง และสร้างความเข้าอกเข้าใจที่ลึกซึ้งกับผู้ใช้งาน</p>
-                        </div>
+                    <div class="timeline-content card glass-card">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary);">1. Empathize</h3>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">ทำความเข้าใจผู้ใช้</h4>
+                        <p style="line-height: 1.7;">ศึกษาความต้องการและ Pain Point ของผู้ใช้ เก็บข้อมูลเชิงลึกเพื่อเข้าใจปัญหาอย่างแท้จริง และสร้างความเข้าอกเข้าใจที่ลึกซึ้งกับผู้ใช้งาน</p>
                     </div>
                 </div>
 
@@ -2216,12 +2024,10 @@
                     <div class="timeline-dot">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div class="timeline-content">
-                        <div class="card glass-card">
-                            <h3>2. Define & Ideate</h3>
-                            <h4>กำหนดและสร้างแนวคิด</h4>
-                            <p>กำหนดขอบเขตงาน สร้าง User Flow, Wireframe, Prototype เพื่อวางโครงสร้างและแนวคิด รวมถึงการ Brainstorm ไอเดียสร้างสรรค์</p>
-                        </div>
+                    <div class="timeline-content card glass-card">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary);">2. Define & Ideate</h3>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">กำหนดและสร้างแนวคิด</h4>
+                        <p style="line-height: 1.7;">กำหนดขอบเขตงาน สร้าง User Flow, Wireframe, Prototype เพื่อวางโครงสร้างและแนวคิด รวมถึงการ Brainstorm ไอเดียสร้างสรรค์</p>
                     </div>
                 </div>
 
@@ -2229,12 +2035,10 @@
                     <div class="timeline-dot">
                         <i class="fas fa-pencil-ruler"></i>
                     </div>
-                    <div class="timeline-content">
-                        <div class="card glass-card">
-                            <h3>3. Design & Develop</h3>
-                            <h4>ออกแบบและพัฒนา</h4>
-                            <p>ออกแบบ UI ที่สวยงามและใช้งานง่าย พัฒนาและทดสอบฟังก์ชันการทำงานจริง โดยคำนึงถึง User Experience ในทุกขั้นตอน</p>
-                        </div>
+                    <div class="timeline-content card glass-card">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary);">3. Design & Develop</h3>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">ออกแบบและพัฒนา</h4>
+                        <p style="line-height: 1.7;">ออกแบบ UI ที่สวยงามและใช้งานง่าย พัฒนาและทดสอบฟังก์ชันการทำงานจริง โดยคำนึงถึง User Experience ในทุกขั้นตอน</p>
                     </div>
                 </div>
 
@@ -2242,12 +2046,10 @@
                     <div class="timeline-dot">
                         <i class="fas fa-vial"></i>
                     </div>
-                    <div class="timeline-content">
-                        <div class="card glass-card">
-                            <h3>4. Test & Iterate</h3>
-                            <h4>ทดสอบและปรับปรุง</h4>
-                            <p>ทดสอบกับผู้ใช้จริง รับ Feedback และปรับปรุงให้ตรงกับความต้องการมากที่สุด พร้อมทำการ A/B Testing เพื่อผลลัพธ์ที่ดีที่สุด</p>
-                        </div>
+                    <div class="timeline-content card glass-card">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary);">4. Test & Iterate</h3>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">ทดสอบและปรับปรุง</h4>
+                        <p style="line-height: 1.7;">ทดสอบกับผู้ใช้จริง รับ Feedback และปรับปรุงให้ตรงกับความต้องการมากที่สุด พร้อมทำการ A/B Testing เพื่อผลลัพธ์ที่ดีที่สุด</p>
                     </div>
                 </div>
 
@@ -2255,12 +2057,10 @@
                     <div class="timeline-dot">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <div class="timeline-content">
-                        <div class="card glass-card">
-                            <h3>5. Deliver</h3>
-                            <h4>ส่งมอบและสรุปผล</h4>
-                            <p>นำเสนอผลงานและเอกสารประกอบ สรุปผลการดำเนินงานและแนวทางพัฒนาต่อ พร้อมทั้งติดตามผลและให้การสนับสนุนต่อเนื่อง</p>
-                        </div>
+                    <div class="timeline-content card glass-card">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary);">5. Deliver</h3>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">ส่งมอบและสรุปผล</h4>
+                        <p style="line-height: 1.7;">นำเสนอผลงานและเอกสารประกอบ สรุปผลการดำเนินงานและแนวทางพัฒนาต่อ พร้อมทั้งติดตามผลและให้การสนับสนุนต่อเนื่อง</p>
                     </div>
                 </div>
             </div>
@@ -2304,8 +2104,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4>อีเมล</h4>
-                            <p>totofifa2015@gmail.com</p>
+                            <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">อีเมล</h4>
+                            <p style="color: var(--text-secondary);">totofifa2015@gmail.com</p>
                         </div>
                     </div>
 
@@ -2314,8 +2114,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4>เบอร์โทร</h4>
-                            <p>06-2589-6377</p>
+                            <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">เบอร์โทร</h4>
+                            <p style="color: var(--text-secondary);">06-2589-6377</p>
                         </div>
                     </div>
 
@@ -2324,8 +2124,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>ที่อยู่</h4>
-                            <p>ปทุมธานี, ประเทศไทย</p>
+                            <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">ที่อยู่</h4>
+                            <p style="color: var(--text-secondary);">ปทุมธานี, ประเทศไทย</p>
                         </div>
                     </div>
 
@@ -2334,8 +2134,8 @@
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div>
-                            <h4>การศึกษา</h4>
-                            <p>Bangkok University<br>Computer Science (IT Innovation)</p>
+                            <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">การศึกษา</h4>
+                            <p style="color: var(--text-secondary);">Bangkok University<br>Computer Science (IT Innovation)</p>
                         </div>
                     </div>
                 </div>
@@ -2363,8 +2163,8 @@
                     <i class="fas fa-link"></i>
                 </a>
             </div>
-            <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: white;">&copy; 2025 อุกฤษฏ์ ผลานิสงค์ (โตโต้). สร้างด้วยความตั้งใจ ❤️</p>
-            <p style="color: rgba(255,255,255,0.8);">UX/UI Designer | กำลังเรียนรู้และพัฒนาทักษะใหม่ๆ อยู่เสมอ</p>
+            <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">&copy; 2025 อุกฤษฏ์ ผลานิสงค์ (โตโต้). Made with ❤️ and lots of ☕</p>
+            <p style="color: rgba(255,255,255,0.8);">UX/UI Designer with CEO Mindset | Ready to transform ideas into amazing experiences</p>
         </div>
     </footer>
 
@@ -2397,9 +2197,9 @@
         const modal = document.getElementById('modal');
         const modalBody = document.getElementById('modalBody');
         const notification = document.getElementById('notification');
-        const particles = document.getElementById('particles');
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
+        const particles = document.getElementById('particles');
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -2409,36 +2209,20 @@
             initializeNavigation();
             initializeTheme();
             initializeCursor();
+            initializeSkillBars();
+            initializeMagneticElements();
             hideLoadingOverlay();
         });
 
-        // Create Advanced Floating Particles
+        // Create Floating Particles
         function createParticles() {
-            const particleCount = 60; // Increased count
-            const colors = ['var(--primary)', 'var(--accent)', 'var(--secondary)', 'var(--accent-2)'];
-            
+            const particleCount = 50;
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                
-                // Random size between 2-8px
-                const size = Math.random() * 6 + 2;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                
-                // Random color
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Random position
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 15 + 20) + 's';
-                
-                // Add morphing to some particles
-                if (Math.random() > 0.7) {
-                    particle.classList.add('particle-morph');
-                }
-                
+                particle.style.animationDuration = (Math.random() * 10 + 20) + 's';
                 particles.appendChild(particle);
             }
         }
@@ -2601,89 +2385,74 @@
             icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Enhanced Cursor - User Friendly Version
+        // Enhanced Cursor
         function initializeCursor() {
-            // Only enable on desktop devices
-            if (window.innerWidth >= 1024) {
+            if (window.innerWidth > 768) {
                 let mouseX = 0, mouseY = 0;
                 let cursorX = 0, cursorY = 0;
                 let followerX = 0, followerY = 0;
 
-                // Track mouse movement
                 document.addEventListener('mousemove', (e) => {
                     mouseX = e.clientX;
                     mouseY = e.clientY;
                 });
 
-                // Animate cursor
                 function animateCursor() {
-                    // Smooth following with gentle easing
-                    cursorX += (mouseX - cursorX) * 0.25;
-                    cursorY += (mouseY - cursorY) * 0.25;
-                    followerX += (mouseX - followerX) * 0.15;
-                    followerY += (mouseY - followerY) * 0.15;
+                    cursorX += (mouseX - cursorX) * 0.3;
+                    cursorY += (mouseY - cursorY) * 0.3;
+                    followerX += (mouseX - followerX) * 0.1;
+                    followerY += (mouseY - followerY) * 0.1;
 
-                    cursor.style.left = cursorX - 10 + 'px';
-                    cursor.style.top = cursorY - 10 + 'px';
-                    cursorFollower.style.left = followerX - 20 + 'px';
-                    cursorFollower.style.top = followerY - 20 + 'px';
+                    cursor.style.left = cursorX - 12 + 'px';
+                    cursor.style.top = cursorY - 12 + 'px';
+                    cursorFollower.style.left = followerX - 24 + 'px';
+                    cursorFollower.style.top = followerY - 24 + 'px';
 
                     requestAnimationFrame(animateCursor);
                 }
                 animateCursor();
 
-                // Gentle hover effects for interactive elements
-                const interactiveElements = document.querySelectorAll('a, button, .card, .tag, .social-link, .nav-link');
-                
-                interactiveElements.forEach(element => {
-                    element.classList.add('magnetic');
-                    
+                // Enhanced cursor hover effects
+                document.querySelectorAll('a, button, .card, .skill-icon, .timeline-dot').forEach(element => {
                     element.addEventListener('mouseenter', () => {
-                        cursor.style.width = '32px';
-                        cursor.style.height = '32px';
+                        cursor.style.transform = 'scale(2)';
+                        cursorFollower.style.transform = 'scale(2)';
                         cursor.style.background = 'var(--accent)';
-                        cursorFollower.style.width = '60px';
-                        cursorFollower.style.height = '60px';
                         cursorFollower.style.borderColor = 'var(--accent)';
                     });
 
                     element.addEventListener('mouseleave', () => {
-                        cursor.style.width = '20px';
-                        cursor.style.height = '20px';
+                        cursor.style.transform = 'scale(1)';
+                        cursorFollower.style.transform = 'scale(1)';
                         cursor.style.background = 'var(--primary)';
-                        cursorFollower.style.width = '40px';
-                        cursorFollower.style.height = '40px';
                         cursorFollower.style.borderColor = 'var(--primary)';
                     });
-
-                    // Gentle magnetic effect (subtle movement)
-                    element.addEventListener('mousemove', (e) => {
-                        const rect = element.getBoundingClientRect();
-                        const centerX = rect.left + rect.width / 2;
-                        const centerY = rect.top + rect.height / 2;
-                        const deltaX = (e.clientX - centerX) * 0.05; // Reduced intensity
-                        const deltaY = (e.clientY - centerY) * 0.05; // Reduced intensity
-                        
-                        element.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-                    });
-                    
-                    element.addEventListener('mouseleave', () => {
-                        element.style.transform = 'translate(0px, 0px)';
-                    });
-                });
-
-                // Hide cursor when leaving window
-                document.addEventListener('mouseleave', () => {
-                    cursor.style.opacity = '0';
-                    cursorFollower.style.opacity = '0';
-                });
-
-                document.addEventListener('mouseenter', () => {
-                    cursor.style.opacity = '1';
-                    cursorFollower.style.opacity = '1';
                 });
             }
         }
+
+        // Magnetic Elements
+        function initializeMagneticElements() {
+            const magneticElements = document.querySelectorAll('.btn, .card, .social-link, .timeline-dot');
+            
+            magneticElements.forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    const rect = element.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const deltaX = (e.clientX - centerX) * 0.1;
+                    const deltaY = (e.clientY - centerY) * 0.1;
+                    
+                    element.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.05)`;
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    element.style.transform = 'translate(0px, 0px) scale(1)';
+                });
+            });
+        }
+
+        // Enhanced Animations
         function initializeAnimations() {
             const observerOptions = {
                 threshold: 0.15,
@@ -2715,10 +2484,93 @@
             });
         }
 
+        // Advanced Skill Bars Animation
+        function initializeSkillBars() {
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBars = entry.target.querySelectorAll('.skill-progress');
+                        progressBars.forEach((bar, index) => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width + '%';
+                                
+                                // Add count-up animation
+                                const percentageElement = bar.parentNode.nextElementSibling;
+                                if (percentageElement) {
+                                    animateNumber(percentageElement, 0, parseInt(width), 2000);
+                                }
+                            }, index * 200);
+                        });
+                    }
+                });
+            }, { threshold: 0.7 });
+
+            document.querySelectorAll('.skill-card').forEach(card => {
+                skillObserver.observe(card);
+            });
+        }
+
+        // Number Animation
+        function animateNumber(element, start, end, duration) {
+            const range = end - start;
+            const stepTime = Math.abs(Math.floor(duration / range));
+            const startTime = new Date().getTime();
+            const endTime = startTime + duration;
+            let current = start;
+
+            function run() {
+                const now = new Date().getTime();
+                const remaining = Math.max((endTime - now) / duration, 0);
+                const value = Math.round(end - (remaining * range));
+                element.textContent = value + '%';
+                
+                if (value !== end) {
+                    requestAnimationFrame(run);
+                }
+            }
+            run();
+        }
+
         // Enhanced Modal Functions
         function openModal(projectId) {
             const projectData = {
                 project1: {
+                    title: 'Lipsters Design',
+                    description: 'เว็บไซต์พอร์ตออกแบบแรกที่สร้างขึ้นเพื่อแสดงผลงานและความสามารถในการออกแบบ',
+                    details: [
+                        '🎨 ใช้ Wix เป็นแพลตฟอร์มในการสร้างเว็บไซต์',
+                        '📚 เรียนรู้พื้นฐาน Web Design และ User Interface',
+                        '🎯 เน้นการแสดงผลงานอย่างเป็นระบบและน่าสนใจ',
+                        '📱 ออกแบบให้ใช้งานง่ายและตอบสนองบนทุกอุปกรณ์',
+                        '✨ เป็นจุดเริ่มต้นในการเรียนรู้ UX/UI Design'
+                    ],
+                    technologies: ['Wix', 'Web Design', 'UI/UX', 'Responsive Design'],
+                    achievements: [
+                        'เป็นพอร์ตโฟลิโอแรกที่ได้รับการยอมรับ',
+                        'ได้เรียนรู้พื้นฐานการออกแบบเว็บไซต์',
+                        'สร้างความประทับใจให้กับผู้ชม'
+                    ],
+                    link: 'https://lipsters.wixsite.com/lipster'
+                },
+                project2: {
+                    title: 'Prototype App Diary',
+                    description: 'การออกแบบแอปพลิเคชันไดอารี่ที่ช่วยให้ผู้ใช้สามารถบันทึกความทรงจำและกิจกรรมประจำวัน',
+                    details: [
+                        '🎨 ออกแบบ UI ที่เรียบง่าย สะอาด และใช้งานสะดวก',
+                        '🔒 ระบบจัดการข้อมูลส่วนตัวที่ปลอดภัย',
+                        '👥 การออกแบบที่เน้นประสบการณ์ผู้ใช้เป็นหลัก',
+                        '⚡ พัฒนาด้วย .NET Framework สำหรับประสิทธิภาพสูง',
+                        '📊 มีระบบ Analytics เพื่อติดตามการใช้งาน'
+                    ],
+                    technologies: ['Figma', '.NET Framework', 'Mobile UI', 'UX Design', 'User Research'],
+                    achievements: [
+                        'ได้เรียนรู้การออกแบบ Mobile Application',
+                        'เข้าใจหลักการ UX Design มากขึ้น',
+                        'ได้ฝึกการใช้งาน Figma อย่างเป็นระบบ'
+                    ]
+                },
+                project3: {
                     title: 'WorkPlanPro',
                     description: 'แอปพลิเคชันจัดตารางเวลาและกิจกรรมในชีวิตประจำวัน',
                     details: [
@@ -2736,43 +2588,6 @@
                         'ได้รับคำชมจากอาจารย์ที่ปรึกษา',
                         'เป็นโครงการที่ใช้หลักการ Design Thinking'
                     ]
-                },
-                project2: {
-                    title: 'Lipsters Website (HTML/CSS)',
-                    description: 'เว็บไซต์พอร์ตโฟลิโอที่พัฒนาด้วย HTML, CSS และ JavaScript',
-                    details: [
-                        '💻 ฝึกเขียน HTML, CSS และ JavaScript แบบ Pure Code',
-                        '📱 เรียนรู้การทำ Responsive Design ให้ใช้งานได้บนมือถือ',
-                        '✨ เพิ่ม CSS Animation และ JavaScript Interactions เบื้องต้น',
-                        '🎨 ฝึกการออกแบบ Layout และ Typography',
-                        '⚡ เรียนรู้การปรับปรุงความเร็วการโหลดหน้าเว็บ',
-                        '🔧 ใช้ Git สำหรับการจัดการ Code เป็นครั้งแรก'
-                    ],
-                    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Git'],
-                    achievements: [
-                        'เรียนรู้การเขียน Code ตั้งแต่เริ่มต้น',
-                        'เข้าใจหลักการ Web Development มากขึ้น',
-                        'ได้ฝึกการแก้ปัญหาและ Debug Code'
-                    ],
-                    link: 'https://lipster.onrender.com/home.html'
-                },
-                project3: {
-                    title: 'Lipsters Design',
-                    description: 'เว็บไซต์พอร์ตโฟลิโอแรกที่สร้างขึ้นเพื่อแสดงผลงาน',
-                    details: [
-                        '🎨 ใช้ Wix เป็นแพลตฟอร์มในการสร้างเว็บไซต์แรก',
-                        '📚 เรียนรู้พื้นฐานการออกแบบเว็บไซต์และ User Interface',
-                        '🎯 ฝึกการจัดวาง Layout และเลือกใช้สีอย่างเหมาะสม',
-                        '📱 เรียนรู้การทำให้เว็บไซต์ใช้งานได้บนมือถือ',
-                        '📝 ฝึกการเขียน Content และจัดระเบียบข้อมูล'
-                    ],
-                    technologies: ['Wix', 'Web Design', 'UI/UX', 'Content Creation'],
-                    achievements: [
-                        'เป็นเว็บไซต์แรกที่สร้างสำเร็จ',
-                        'ได้เรียนรู้พื้นฐานการออกแบบเว็บไซต์',
-                        'เริ่มเข้าใจหลักการ UX/UI Design'
-                    ],
-                    link: 'https://lipsters.wixsite.com/lipster'
                 }
             };
 
@@ -2781,7 +2596,7 @@
 
             modalBody.innerHTML = `
                 <div style="text-align: center; margin-bottom: 2rem;">
-                    <h2 style="font-size: 2.2rem; margin-bottom: 1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: var(--text-primary);">${project.title}</h2>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${project.title}</h2>
                     <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7;">${project.description}</p>
                 </div>
                 
@@ -2792,7 +2607,7 @@
                     <div style="display: grid; gap: 1rem;">
                         ${project.details.map(detail => `
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--border-radius); border-left: 4px solid var(--primary);">
-                                <span style="font-size: 1rem; line-height: 1.6; color: var(--text-primary);">${detail}</span>
+                                <span style="font-size: 1rem; line-height: 1.6;">${detail}</span>
                             </div>
                         `).join('')}
                     </div>
@@ -3118,7 +2933,13 @@
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 // Reinitialize components that need resizing
-                console.log('Window resized, reinitializing components...');
+                if (window.innerWidth <= 768) {
+                    cursor.style.opacity = '0';
+                    cursorFollower.style.opacity = '0';
+                } else {
+                    cursor.style.opacity = '1';
+                    cursorFollower.style.opacity = '1';
+                }
             }, 250);
         });
 
@@ -3133,6 +2954,30 @@
             document.body.classList.remove('keyboard-navigation');
         });
 
+        // Console Easter Egg
+        console.log(`
+    🎨 Enhanced TOTO Portfolio loaded successfully!
+    
+    ╔══════════════════════════════════════════════════════════╗
+    ║                                                          ║
+    ║   👨‍💻 Made with ❤️ by Toto Aukit                          ║
+    ║   🎯 UX/UI Designer with CEO Mindset                    ║
+    ║   📧 Contact: totofifa2015@gmail.com                    ║
+    ║   🔍 Try the Konami Code for a surprise! ↑↑↓↓←→←→BA      ║
+    ║                                                          ║
+    ║   🌟 Features:                                           ║
+    ║   • Advanced animations & micro-interactions            ║
+    ║   • Glassmorphism design                                ║
+    ║   • Magnetic cursor effects                             ║
+    ║   • Floating particles                                  ║
+    ║   • Progressive loading                                 ║
+    ║   • Dark/Light theme                                    ║
+    ║   • Responsive design                                   ║
+    ║   • Accessibility features                              ║
+    ║                                                          ║
+    ╚══════════════════════════════════════════════════════════╝
+        `);
+
         // Initialize performance monitoring
         if ('performance' in window) {
             window.addEventListener('load', () => {
@@ -3145,5 +2990,4 @@
         }
     </script>
 </body>
-</html>
-                
+</html><!DOCTYPE html>

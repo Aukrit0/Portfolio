@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="th" xmlns:og="http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="อุกฤษฏ์ ผลานิสงค์ (โตโต้)">
+    <meta name="description" content="พอร์ตโฟลิโออย่างเป็นทางการของ อุกฤษฏ์ ผลานิสงค์ (โตโต้) - UX/UI Designer มืออาชีพผู้เชี่ยวชาญด้านการออกแบบประสบการณ์ผู้ใช้และส่วนต่อประสาน">
+    <title>อุกฤษฏ์ ผลานิสงค์ (โตโต้) - UX/UI Designer | Portfolio</title>
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Critical CSS (above-the-fold styles) -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --surface: rgba(255, 255, 255, 0.95);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Kanit', -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Loading overlay - critical */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Initial navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: var(--surface);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        /* Hero section - critical */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient-primary);
+        }
+    </style>
+    
+    <!-- Optimized font loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Async load non-critical CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- SEO & OG Tags -->
+    <meta property="og:title" content="อุกฤษฏ์ ผลานิสงค์ | UX/UI Designer Portfolio">
+    <meta property="og:description" content="พอร์ตโฟลิโออย่างเป็นทางการแสดงผลงานการออกแบบประสบการณ์ผู้ใช้และส่วนต่อประสาน">
+    <meta property="og:type" content="website">
+    
+    <!-- Main Styles -->
+    <style>
+        /* CSS Variables - Complete Set */
+        :root {
+            --accent-2: #f5576c;
+            --accent-3: #4facfe;
+            --success: #00d4aa;
+            --warning: #ff6b6b;
+            --danger: #ff4757;
+            --text-muted: #718096;
+            --bg-tertiary: #edf2f7;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --border-radius-lg: 24px;
+            --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* Dark theme - optimized */
+        [data-theme="dark"] {
+            --text-primary: #f7fafc;
+            --text-secondary: #e2e8f0;
+            --text-muted: #a0aec0;
+            --bg-primary: #1a202c;
+            --bg-secondary: #2d3748;
+            --bg-tertiary: #4a5568;
+            --surface: rgba(45, 55, 72, 0.95);
+        }
+
+        /* Performance: Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Optimized scroll progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 10000;
+            transition: width 0.1s ease;
+            will-change: width;
+        }
+
+        /* Simplified particle system */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* Reduce particles for better performance */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 20s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation - optimized */
+        .navbar {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Theme toggle - simplified */
+        .theme-toggle {
+            background: var(--glass);
+            border: 2px solid var(--glass-border);
+            color: var(--text-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Hero section - optimized animations */
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-greeting {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons - optimized */
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius-lg);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards - simplified animations */
+        .card {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Grid system */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            padding: 4px;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Skills - optimized */
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 1rem;
+        }
+
+        /* Contact form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Back to top - simplified */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Mobile optimization */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: 2px solid var(--text-primary);
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--surface);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-section {
+                text-align: center;
+            }
+        }
+
+        /* Accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+        }
+
+        .skip-link:focus {
+            top: 8px;
+        }
+
+        /* Loading animation - simplified */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--bg-tertiary);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modal - optimized */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Notification - simplified */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 10000;
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            margin: 0.25rem;
+        }
+
+        /* Project tags */
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+        }
+
+        /* Lazy loading placeholder */
+        .lazy-img {
+            background: var(--bg-tertiary);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Optimized loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Reduced particle system -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation">
+        <div class="nav-container">
+            <a href="#home" class="logo" aria-label="TOTO Portfolio Home">
+                <i class="fas fa-code" aria-hidden="true"></i>
+                TOTO
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">หน้าแรก</a></li>
+                <li><a href="#about" class="nav-link">เกี่ยวกับ</a></li>
+                <li><a href="#projects" class="nav-link">ผลงาน</a></li>
+                <li><a href="#skills" class="nav-link">ทักษะ</a></li>
+                <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero" role="banner">
+            <div class="hero-content">
+                <p class="hero-greeting">👋 สวัสดีครับ! ผมคือ</p>
+                <h1 class="hero-title">อุกฤษฏ์ ผลานิสงค์</h1>
+                <p class="hero-subtitle">UX/UI Designer with CEO Mindset</p>
+                <p class="hero-description">
+                    นักออกแบบ UX/UI ที่กำลังเติบโตและเรียนรู้อยู่เสมอ มุ่งเน้นการสร้างสรรค์ผลงานที่ใช้งานง่ายและตอบโจทย์ผู้ใช้จริง
+                </p>
+                <div class="cta-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                        ดูผลงาน
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        ติดต่อ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section" aria-labelledby="about-title">
+            <div class="container">
+                <h2 id="about-title" class="section-title">เกี่ยวกับผม</h2>
+                <div class="about-content">
+                    <div class="profile-section">
+                        <div class="profile-image">
+                            <img src="img/profile-me.jpg" alt="อุกฤษฏ์ ผลานิสงค์" loading="lazy" class="lazy-img">
+                        </div>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">โตโต้</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">UX/UI Designer</p>
+                        <div class="personality-tags">
+                            <span class="tag">ชอบเรียนรู้</span>
+                            <span class="tag">ใจเย็น</span>
+                            <span class="tag">เป็นมิตร</span>
+                            <span class="tag">มุ่งมั่น</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">
+                            นักออกแบบ UX/UI ที่หลงใหลในการเรียนรู้และพัฒนาทักษะใหม่ๆ
+                        </h3>
+                        <p style="line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
+                            ผมเป็นคนที่ชอบเรียนรู้สิ่งใหม่และมองหาโอกาสในการพัฒนาตัวเองอยู่เสมอ 
+                            เป้าหมายของผมคือการสร้างผลงานที่มีคุณภาพและเป็นประโยชน์จริงต่อผู้ใช้
+                        </p>
+                        
+                        <div class="grid grid-2" style="gap: 1.5rem;">
+                            <div style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--border-radius);">
+                                <h4 style="color: var(--primary); margin-bottom: 0.5rem;">🛠️ เครื่องมือที่ใช้</h4>
+                                <p style="color: var(--text-secondary);">Figma, AI Tools, VSCode, Canva</p>
+                            </div>
+                            <div style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--border-radius);">
+                                <h4 style="color: var(--primary); margin-bottom: 0.5rem;">🎓 การศึกษา</h4>
+                                <p style="color: var(--text-secondary);">Bangkok University - Computer Science</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section" aria-labelledby="projects-title">
+            <div class="container">
+                <h2 id="projects-title" class="section-title">ผลงานที่ภูมิใจ</h2>
+                <div class="grid grid-3">
+                    <!-- Project 1 -->
+                    <article class="card project-card" tabindex="0" role="article">
+                        <div style="height: 200px; background: var(--gradient-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-calendar-alt" style="font-size: 3rem; color: white;" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">WorkPlanPro</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                            แอปพลิเคชันจัดตารางเวลาส่วนตัวที่ผมพัฒนาขึ้นเพื่อช่วยในการจัดระเบียบกิจกรรมประจำวัน
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">UX Research</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('project1')" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                            ดูรายละเอียด
+                        </button>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="card project-card" tabindex="0" role="article">
+                        <div style="height: 200px; background: var(--gradient-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-code" style="font-size: 3rem; color: white;" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Lipsters Website</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                            เว็บไซต์พอร์ตโฟลิโอที่พัฒนาด้วย HTML, CSS และ JavaScript โดยเน้นการออกแบบที่ Modern
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <a href="https://lipsters.wixsite.com/designs" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            ดูเว็บไซต์
+                        </a>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="card project-card" tabindex="0" role="article">
+                        <div style="height: 200px; background: var(--gradient-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-palette" style="font-size: 3rem; color: white;" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Lipsters Design</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                            เว็บไซต์พอร์ตออกแบบแรกที่สร้างขึ้นเพื่อแสดงผลงานและความสามารถในการออกแบบ
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Design</span>
+                            <span class="project-tag">Wix</span>
+                            <span class="project-tag">UI/UX</span>
+                        </div>
+                        <a href="https://lipsters.wixsite.com/lipster" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            ดูเว็บไซต์
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section" aria-labelledby="skills-title">
+            <div class="container">
+                <h2 id="skills-title" class="section-title">ทักษะและความเชี่ยวชาญ</h2>
+                <div class="grid grid-3">
+                    <div class="card" style="text-align: center;">
+                        <div class="skill-icon">
+                            <i class="fab fa-figma" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Figma</h3>
+                        <p style="color: var(--text-secondary);">เครื่องมือหลักในการออกแบบ UI/UX และ Prototyping</p>
+                    </div>
+
+                    <div class="card" style="text-align: center;">
+                        <div class="skill-icon">
+                            <i class="fab fa-html5" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">HTML & CSS</h3>
+                        <p style="color: var(--text-secondary);">พื้นฐานการพัฒนาเว็บไซต์และการ implement design</p>
+                    </div>
+
+                    <div class="card" style="text-align: center;">
+                        <div class="skill-icon">
+                            <i class="fab fa-python" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Python</h3>
+                        <p style="color: var(--text-secondary);">Programming language สำหรับ automation</p>
+                    </div>
+
+                    <div class="card" style="text-align: center;">
+                        <div class="skill-icon">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">.NET</h3>
+                        <p style="color: var(--text-secondary);">Framework สำหรับการพัฒนาแอปพลิเคชัน</p>
+                    </div>
+
+                    <div class="card" style="text-align: center;">
+                        <div class="skill-icon">
+                            <i class="fas fa-paintbrush" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Canva</h3>
+                        <p style="color: var(--text-secondary);">เครื่องมือในการสร้าง graphic design</p>
+                    </div>
+
+                    <div class="card" style="text-align: center;">
+                        <div class="skill-icon">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">GitHub</h3>
+                        <p style="color: var(--text-secondary);">Version control และ collaboration platform</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title" class="section-title">ติดต่อผม</h2>
+                <div class="grid grid-2" style="gap: 3rem;">
+                    <div class="card">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--primary);">ส่งข้อความถึงผม</h3>
+                        <form id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name">ชื่อ <span style="color: var(--danger);">*</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true" placeholder="กรุณากรอกชื่อของคุณ">
+                                <span class="error-message" style="color: var(--danger); font-size: 0.85rem; display: none;"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">อีเมล <span style="color: var(--danger);">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" placeholder="your.email@example.com">
+                                <span class="error-message" style="color: var(--danger); font-size: 0.85rem; display: none;"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">หัวข้อ</label>
+                                <input type="text" id="subject" name="subject" placeholder="หัวข้อที่ต้องการติดต่อ">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">ข้อความ <span style="color: var(--danger);">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="กรุณาใส่ข้อความที่ต้องการส่งถึงผม..."></textarea>
+                                <span class="error-message" style="color: var(--danger); font-size: 0.85rem; display: none;"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <span id="submitText">ส่งข้อความ</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div class="skill-icon" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.25rem;">อีเมล</h4>
+                                    <p style="color: var(--text-secondary);">totofifa2015@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div class="skill-icon" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.25rem;">เบอร์โทร</h4>
+                                    <p style="color: var(--text-secondary);">06-2589-6377</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div class="skill-icon" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.25rem;">ที่อยู่</h4>
+                                    <p style="color: var(--text-secondary);">ปทุมธานี, ประเทศไทย</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/ToAukit" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/aukrit_to" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/totofifa2015" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:totofifa2015@gmail.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+            <p style="margin-bottom: 0.5rem;">&copy; 2025 อุกฤษฏ์ ผลานิสงค์ (โตโต้). สร้างด้วยความตั้งใจ ❤️</p>
+            <p style="opacity: 0.8;">UX/UI Designer | กำลังเรียนรู้และพัฒนาทักษะใหม่ๆ อยู่เสมอ</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal" id="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close modal" style="position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary);">&times;</button>
+            <h2 id="modalTitle" style="display: none;">Project Details</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification" role="alert" aria-live="polite"></div>
+
+    <!-- Optimized JavaScript -->
+    <script>
+        // Performance: Use passive event listeners
+        const passiveSupported = (() => {
+            let passive = false;
+            try {
+                const options = {
+                    get passive() {
+                        passive = true;
+                        return false;
+                    }
+                };
+                window.addEventListener("test", null, options);
+                window.removeEventListener("test", null, options);
+            } catch(err) {}
+            return passive;
+        })();
+
+        const passive = passiveSupported ? { passive: true } : false;
+
+        // DOM Elements
+        const navbar = document.getElementById('navbar');
+        const navMenu = document.getElementById('navMenu');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const themeToggle = document.getElementById('themeToggle');
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const contactForm = document.getElementById('contactForm');
+        const modal = document.getElementById('modal');
+        const modalBody = document.getElementById('modalBody');
+        const notification = document.getElementById('notification');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createOptimizedParticles();
+            initializeScrollEffects();
+            initializeNavigation();
+            initializeTheme();
+            initializeLazyLoading();
+            hideLoadingOverlay();
+            initializeFormValidation();
+        });
+
+        // Optimized particle system - reduced number
+        function createOptimizedParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 10 : 20; // Fewer particles on mobile
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 20) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Hide loading overlay quickly
+        function hideLoadingOverlay() {
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 300);
+            }, 500); // Reduced from 1500ms
+        }
+
+        // Navigation with event delegation
+        function initializeNavigation() {
+            // Mobile menu toggle
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+                mobileMenuToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            });
+
+            // Event delegation for nav links
+            navMenu.addEventListener('click', (e) => {
+                if (e.target.classList.contains('nav-link')) {
+                    e.preventDefault();
+                    const targetId = e.target.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Close mobile menu
+                        navMenu.classList.remove('active');
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        
+                        // Update active state
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        e.target.classList.add('active');
+                    }
+                }
+            });
+        }
+
+        // Optimized scroll effects with throttling
+        function initializeScrollEffects() {
+            let ticking = false;
+            let lastScrollY = 0;
+            
+            function updateScrollEffects() {
+                const scrollY = window.pageYOffset;
+                const docHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollY / docHeight) * 100;
+                
+                // Update progress bar
+                scrollProgress.style.width = scrollPercent + '%';
+                
+                // Update navbar
+                if (scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Show/hide back to top
+                if (scrollY > 400) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+                
+                lastScrollY = scrollY;
+                ticking = false;
+            }
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(updateScrollEffects);
+                    ticking = true;
+                }
+            }, passive);
+        }
+
+        // Theme toggle
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Lazy loading for images
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img.lazy-img');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.src || 'placeholder.jpg'; // Add actual image loading
+                            img.classList.remove('lazy-img');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+        }
+
+        // Form validation with real-time feedback
+        function initializeFormValidation() {
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            
+            // Real-time validation
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => validateField(input));
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('error')) {
+                        validateField(input);
+                    }
+                });
+            });
+            
+            // Form submission
+            contactForm.addEventListener('submit', handleFormSubmit);
+        }
+
+        function validateField(field) {
+            const errorMsg = field.parentElement.querySelector('.error-message');
+            let isValid = true;
+            let message = '';
+            
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                isValid = false;
+                message = 'กรุณากรอกข้อมูลในช่องนี้';
+            } else if (field.type === 'email' && field.value) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(field.value)) {
+                    isValid = false;
+                    message = 'กรุณากรอกอีเมลให้ถูกต้อง';
+                }
+            } else if (field.id === 'message' && field.value && field.value.length < 10) {
+                isValid = false;
+                message = 'ข้อความต้องมีอย่างน้อย 10 ตัวอักษร';
+            }
+            
+            if (!isValid) {
+                field.classList.add('error');
+                field.style.borderColor = 'var(--danger)';
+                errorMsg.textContent = message;
+                errorMsg.style.display = 'block';
+            } else {
+                field.classList.remove('error');
+                field.style.borderColor = '';
+                errorMsg.style.display = 'none';
+            }
+            
+            return isValid;
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let isFormValid = true;
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isFormValid = false;
+                }
+            });
+            
+            if (!isFormValid) {
+                showNotification('กรุณาตรวจสอบข้อมูลที่กรอก', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const submitText = document.getElementById('submitText');
+            submitButton.disabled = true;
+            submitText.textContent = 'กำลังส่ง...';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                contactForm.reset();
+                submitButton.disabled = false;
+                submitText.textContent = 'ส่งข้อความ';
+                showNotification('ส่งข้อความสำเร็จ! ขอบคุณที่ติดต่อ', 'success');
+            }, 1500);
+        }
+
+        // Back to top
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Modal functions
+        window.openModal = function(projectId) {
+            const projectData = {
+                project1: {
+                    title: 'WorkPlanPro',
+                    description: 'แอปพลิเคชันจัดตารางเวลาและกิจกรรมในชีวิตประจำวัน',
+                    details: [
+                        'วิจัยและทำความเข้าใจผู้ใช้งาน',
+                        'สร้าง User Flow และ Wireframe',
+                        'ออกแบบ UI ที่ใช้งานง่าย',
+                        'ทดสอบกับผู้ใช้จริง'
+                    ],
+                    technologies: ['Flutter', 'Figma', 'UX Research']
+                }
+            };
+
+            const project = projectData[projectId];
+            if (!project) return;
+
+            modalBody.innerHTML = `
+                <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">${project.title}</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">${project.description}</p>
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">รายละเอียด</h3>
+                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                    ${project.details.map(detail => `<li style="margin-bottom: 0.5rem;">${detail}</li>`).join('')}
+                </ul>
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">เทคโนโลยี</h3>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                </div>
+            `;
+
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        // Modal click outside to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Notification function
+        function showNotification(message, type = 'success') {
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Performance: Clean up particles when page is hidden
+        document.addEventListener('visibilitychange', () => {
+            const particles = document.getElementById('particles');
+            if (document.hidden) {
+                particles.style.display = 'none';
+            } else {
+                particles.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

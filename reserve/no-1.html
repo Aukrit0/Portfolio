@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="th" xmlns:og="http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="อุกฤษฏ์ ผลานิสงค์ (โตโต้)">
+    <meta name="description" content="พอร์ตโฟลิโออย่างเป็นทางการของ อุกฤษฏ์ ผลานิสงค์ (โตโต้) - UX/UI Designer มืออาชีพผู้เชี่ยวชาญด้านการออกแบบประสบการณ์ผู้ใช้และส่วนต่อประสาน">
+    <title>อุกฤษฏ์ ผลานิสงค์ (โตโต้) - UX/UI Designer | Portfolio</title>
+    
+    <!-- Enhanced Performance & SEO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Critical CSS Inline for Performance -->
+    <style>
+        /* CSS Custom Properties - Enhanced Design System */
+        :root {
+            /* Primary Color Palette */
+            --primary-50: #f0f4ff;
+            --primary-100: #e0e9ff;
+            --primary-200: #c7d6fe;
+            --primary-300: #a5b8fc;
+            --primary-400: #8b94f8;
+            --primary-500: #667eea;
+            --primary-600: #5a67d8;
+            --primary-700: #4c51bf;
+            --primary-800: #434190;
+            --primary-900: #3c366b;
+            
+            /* Secondary Colors */
+            --secondary-400: #764ba2;
+            --secondary-500: #6b46c1;
+            --secondary-600: #553c9a;
+            
+            /* Accent Colors */
+            --accent-pink: #f093fb;
+            --accent-blue: #4facfe;
+            --accent-purple: #c084fc;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            
+            /* Semantic Colors */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+            
+            /* Neutral Colors - Improved Contrast */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Semantic Text Colors */
+            --text-primary: var(--gray-900);
+            --text-secondary: var(--gray-700);
+            --text-muted: var(--gray-500);
+            --text-inverse: #ffffff;
+            
+            /* Background Colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: var(--gray-50);
+            --bg-tertiary: var(--gray-100);
+            --bg-dark: var(--gray-900);
+            
+            /* Surface Colors with Glass Effect */
+            --surface-glass: rgba(255, 255, 255, 0.8);
+            --surface-glass-dark: rgba(17, 24, 39, 0.8);
+            --surface-elevated: #ffffff;
+            
+            /* Interactive States */
+            --interactive-hover: var(--primary-50);
+            --interactive-active: var(--primary-100);
+            --interactive-focus: var(--primary-200);
+            
+            /* Gradients - Enhanced */
+            --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-400) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-blue) 100%);
+            --gradient-hero: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-500) 50%, var(--accent-pink) 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            
+            /* Shadows - Improved Depth */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+            
+            /* Border Radius - Consistent Scale */
+            --radius-xs: 4px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Spacing Scale */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Typography Scale */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+            
+            /* Animation Timing */
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --duration-slow: 350ms;
+            --duration-slower: 500ms;
+            
+            /* Easing Functions */
+            --ease-linear: linear;
+            --ease-in: cubic-bezier(0.4, 0, 1, 1);
+            --ease-out: cubic-bezier(0, 0, 0.2, 1);
+            --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Z-Index Scale */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+            --z-tooltip: 1070;
+            --z-toast: 1080;
+        }
+
+        /* Dark Theme Enhanced */
+        [data-theme="dark"] {
+            --text-primary: var(--gray-50);
+            --text-secondary: var(--gray-300);
+            --text-muted: var(--gray-400);
+            --bg-primary: var(--gray-900);
+            --bg-secondary: var(--gray-800);
+            --bg-tertiary: var(--gray-700);
+            --surface-glass: rgba(17, 24, 39, 0.8);
+            --surface-elevated: var(--gray-800);
+            --interactive-hover: rgba(99, 102, 241, 0.1);
+            --interactive-active: rgba(99, 102, 241, 0.2);
+        }
+
+        /* Reset and Base Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Enhanced Typography */
+        body {
+            font-family: 'Inter', 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Improved Focus Management */
+        *:focus {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 2px;
+        }
+
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        /* Enhanced Loading State */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary-500), var(--secondary-400));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            transition: opacity var(--duration-slow) var(--ease-out);
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--space-4);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Advanced Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-4) var(--space-6);
+            background: var(--surface-glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: var(--z-sticky);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .navbar.scrolled {
+            padding: var(--space-3) var(--space-6);
+            box-shadow: var(--shadow-lg);
+            background: var(--surface-glass);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Enhanced Logo */
+        .logo {
+            font-size: var(--text-2xl);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: transform var(--duration-normal) var(--ease-spring);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-lg);
+        }
+
+        /* Enhanced Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--space-2);
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-lg);
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            transition: left var(--duration-normal) var(--ease-out);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            left: 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-600);
+            transform: translateY(-1px);
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: var(--z-toast);
+            transition: width var(--duration-fast) var(--ease-linear);
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: var(--space-8);
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            margin-bottom: var(--space-6);
+            animation: fadeInUp 0.8s var(--ease-out);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: var(--space-4);
+            color: white;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s var(--ease-out) 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: var(--space-6);
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.8s var(--ease-out) 0.4s both;
+        }
+
+        .hero-description {
+            font-size: var(--text-xl);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-8);
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s var(--ease-out) 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Button System */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-6);
+            border: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: var(--text-base);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-full);
+            transform: translate(-50%, -50%);
+            transition: width var(--duration-slow) var(--ease-out), height var(--duration-slow) var(--ease-out);
+        }
+
+        .btn:hover::before {
+            width: 120%;
+            height: 120%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s var(--ease-out) 0.8s both;
+        }
+
+        /* Enhanced Sections */
+        .section {
+            padding: var(--space-20) var(--space-6);
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: var(--space-16);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -var(--space-4);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+        }
+
+        /* Advanced Card System */
+        .card {
+            background: var(--surface-elevated);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--duration-normal) var(--ease-out);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity var(--duration-normal) var(--ease-out);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced Grid System */
+        .grid {
+            display: grid;
+            gap: var(--space-8);
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        /* About Section Enhancements */
+        .about-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: var(--space-12);
+            align-items: start;
+        }
+
+        .profile-section {
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .profile-image {
+            width: 240px;
+            height: 240px;
+            margin: 0 auto var(--space-6);
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            padding: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .personality-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            justify-content: center;
+            margin-top: var(--space-4);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            transition: transform var(--duration-normal) var(--ease-spring);
+        }
+
+        .tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Skills Section Enhancement */
+        .skill-card {
+            text-align: center;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-3xl);
+            margin: 0 auto var(--space-4);
+            transition: all var(--duration-normal) var(--ease-spring);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Mobile Optimization */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            font-size: var(--text-xl);
+            cursor: pointer;
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Theme Toggle Enhancement */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-500);
+            color: white;
+            transform: scale(1.05) rotate(15deg);
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--surface-glass);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: var(--space-8);
+                transition: left var(--duration-slow) var(--ease-out);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: var(--space-4);
+                border-radius: var(--radius-lg);
+                font-size: var(--text-lg);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+
+            .profile-section {
+                position: static;
+            }
+
+            .hero-content {
+                padding: var(--space-6);
+            }
+
+            .section {
+                padding: var(--space-16) var(--space-4);
+            }
+        }
+
+        /* Performance Optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+                --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Reduced transparency for better accessibility */
+        @media (prefers-reduced-transparency) {
+            .navbar,
+            .card,
+            .btn-secondary {
+                backdrop-filter: none;
+                background: var(--surface-elevated);
+            }
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Enhanced Form Styles */
+        .form-group {
+            margin-bottom: var(--space-6);
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: var(--space-4);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            font-size: var(--text-base);
+            font-family: inherit;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all var(--duration-normal) var(--ease-out);
+            resize: vertical;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-input:invalid,
+        .form-textarea:invalid {
+            border-color: var(--error);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: var(--text-sm);
+            margin-top: var(--space-2);
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: slideDown var(--duration-normal) var(--ease-out);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all var(--duration-slower) var(--ease-out);
+            opacity: 0;
+        }
+
+        .project-card:hover::after {
+            animation: shimmer 1.5s ease-out;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .project-image {
+            height: 220px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.5;
+        }
+
+        .project-icon {
+            font-size: var(--text-5xl);
+            color: white;
+            z-index: 1;
+            transition: transform var(--duration-normal) var(--ease-spring);
+        }
+
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-6);
+        }
+
+        .project-tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .project-tag:hover {
+            background: var(--primary-100);
+            color: var(--primary-700);
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--surface-elevated);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform var(--duration-normal) var(--ease-spring);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: var(--gray-100);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            font-size: var(--text-xl);
+            cursor: pointer;
+            color: var(--gray-600);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .modal-close:hover {
+            background: var(--error);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-300);
+            text-align: center;
+            padding: var(--space-16) var(--space-6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        .social-link {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: var(--text-xl);
+            transition: all var(--duration-normal) var(--ease-spring);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-secondary);
+            opacity: 0;
+            transition: opacity var(--duration-normal) var(--ease-out);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-6);
+            right: var(--space-6);
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: var(--text-xl);
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+            transition: all var(--duration-normal) var(--ease-spring);
+            z-index: var(--z-fixed);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Enhanced Notifications */
+        .notification {
+            position: fixed;
+            top: var(--space-20);
+            right: var(--space-6);
+            background: var(--success);
+            color: white;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            transform: translateX(120%);
+            transition: transform var(--duration-normal) var(--ease-spring);
+            z-index: var(--z-toast);
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--error);
+        }
+
+        .notification.warning {
+            background: var(--warning);
+        }
+
+        .notification-icon {
+            font-size: var(--text-lg);
+        }
+
+        /* Contact Section Enhancements */
+        .contact-info-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-xl);
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+            color: var(--text-primary);
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            font-size: var(--text-base);
+        }
+
+        /* Particle System - Optimized */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--accent-pink);
+            border-radius: var(--radius-full);
+            opacity: 0.4;
+            animation: float-particle 15s linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+                transform: translateY(90vh) translateX(10px) scale(1);
+            }
+            90% {
+                opacity: 0.4;
+                transform: translateY(10vh) translateX(-10px) scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) translateX(20px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-600);
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: var(--primary-200);
+            color: var(--primary-900);
+        }
+
+        ::-moz-selection {
+            background: var(--primary-200);
+            color: var(--primary-900);
+        }
+    </style>
+    
+    <!-- Optimized Font Loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kanit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- SEO & Meta Tags -->
+    <meta property="og:title" content="อุกฤษฏ์ ผลานิสงค์ | UX/UI Designer Portfolio">
+    <meta property="og:description" content="พอร์ตโฟลิโออย่างเป็นทางการแสดงผลงานการออกแบบประสบการณ์ผู้ใช้และส่วนต่อประสาน">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./img/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "อุกฤษฏ์ ผลานิสงค์",
+        "alternateName": "โตโต้",
+        "jobTitle": "UX/UI Designer",
+        "url": "https://yourwebsite.com",
+        "sameAs": [
+            "https://www.facebook.com/ToAukit",
+            "https://www.instagram.com/aukrit_to",
+            "https://github.com/totofifa2015"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main" class="sr-only">ข้ามไปยังเนื้อหาหลัก</a>
+
+    <!-- Enhanced Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+        <div class="loading-content">
+            <div class="loading-spinner" aria-hidden="true"></div>
+            <div class="loading-text">กำลังโหลด...</div>
+        </div>
+    </div>
+
+    <!-- Optimized Particle System -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- Enhanced Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="เมนูหลัก">
+        <div class="nav-container">
+            <a href="#home" class="logo" aria-label="โฮมเพจ - พอร์ตโฟลิโอของโตโต้">
+                <div class="logo-icon">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                </div>
+                <span>TOTO</span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">หน้าแรก</a></li>
+                <li><a href="#about" class="nav-link">เกี่ยวกับ</a></li>
+                <li><a href="#projects" class="nav-link">ผลงาน</a></li>
+                <li><a href="#skills" class="nav-link">ทักษะ</a></li>
+                <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+            </ul>
+
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="theme-toggle" id="themeToggle" aria-label="เปลี่ยนธีม">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="เปิด/ปิดเมนู" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Enhanced Hero Section -->
+        <section id="home" class="hero" role="banner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles" aria-hidden="true"></i>
+                    <span>Available for Work</span>
+                    <div style="width: 8px; height: 8px; background: var(--success); border-radius: var(--radius-full); animation: pulse 2s infinite;"></div>
+                </div>
+
+                <h1 class="hero-title">
+                    สวัสดีครับ! ผมคือ<br>
+                    <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">อุกฤษฏ์ ผลานิสงค์</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    UX/UI Designer with <span style="color: var(--accent-pink);">CEO Mindset</span>
+                </p>
+
+                <p class="hero-description">
+                    นักออกแบบ UX/UI ที่กำลังเติบโตและเรียนรู้อยู่เสมอ มุ่งเน้นการสร้างสรรค์ผลงานที่ใช้งานง่าย 
+                    มีประสิทธิภาพ และตอบโจทย์ผู้ใช้จริง พร้อมมุมมองทางธุรกิจที่แข็งแกร่ง
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                        <span>ดูผลงานของผม</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-coffee" aria-hidden="true"></i>
+                        <span>มาคุยกันเถอะ</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced About Section -->
+        <section id="about" class="section" aria-labelledby="about-title">
+            <div class="container">
+                <h2 id="about-title" class="section-title">เกี่ยวกับผม</h2>
+                
+                <div class="about-content">
+                    <div class="profile-section">
+                        <div class="profile-image">
+                            <img src="img/profile-me.jpg" alt="อุกฤษฏ์ ผลานิสงค์ - UX/UI Designer" loading="lazy">
+                        </div>
+                        
+                        <h3 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            โตโต้
+                        </h3>
+                        
+                        <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-weight: 500;">
+                            UX/UI Designer
+                        </p>
+                        
+                        <div class="personality-tags">
+                            <span class="tag">🎨 Creative</span>
+                            <span class="tag">📚 Learner</span>
+                            <span class="tag">😊 Friendly</span>
+                            <span class="tag">🎯 Goal-oriented</span>
+                            <span class="tag">💡 Innovative</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="font-size: var(--text-3xl); font-weight: 700; margin-bottom: var(--space-4); color: var(--text-primary);">
+                            นักออกแบบ UX/UI ที่หลงใหลในการเรียนรู้และพัฒนาทักษะใหม่ๆ
+                        </h3>
+                        
+                        <p style="font-size: var(--text-lg); line-height: 1.8; margin-bottom: var(--space-8); color: var(--text-secondary);">
+                            ผมเป็นคนที่ชอบเรียนรู้สิ่งใหม่และมองหาโอกาสในการพัฒนาตัวเองอยู่เสมอ 
+                            เป้าหมายของผมคือการสร้างผลงานที่มีคุณภาพและเป็นประโยชน์จริงต่อผู้ใช้ 
+                            พร้อมทั้งมองการออกแบบในมุมมองทางธุรกิจ เพื่อสร้างผลกระทบที่ยั่งยืน
+                        </p>
+                        
+                        <div class="grid grid-2" style="gap: var(--space-6);">
+                            <div class="card" style="padding: var(--space-6); background: var(--gradient-primary); color: white;">
+                                <h4 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+                                    <i class="fas fa-tools" style="color: rgba(255, 255, 255, 0.9);"></i>
+                                    เครื่องมือที่ใช้
+                                </h4>
+                                <p style="opacity: 0.9;">Figma, Adobe Creative Suite, Principle, InVision, AI Tools</p>
+                            </div>
+                            
+                            <div class="card" style="padding: var(--space-6); background: var(--gradient-secondary); color: white;">
+                                <h4 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+                                    <i class="fas fa-graduation-cap" style="color: rgba(255, 255, 255, 0.9);"></i>
+                                    การศึกษา
+                                </h4>
+                                <p style="opacity: 0.9;">Bangkok University - Computer Science</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: var(--space-8); padding: var(--space-6); background: var(--bg-secondary); border-radius: var(--radius-xl);">
+                            <h4 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-4); color: var(--text-primary);">
+                                🎯 วิสัยทัศน์และเป้าหมาย
+                            </h4>
+                            <p style="color: var(--text-secondary); line-height: 1.7;">
+                                "การออกแบบที่ดีไม่ใช่แค่ความสวยงาม แต่ต้องแก้ปัญหาจริงและสร้างคุณค่าให้กับธุรกิจ 
+                                ผมเชื่อว่าการมี CEO Mindset จะช่วยให้เข้าใจความต้องการของธุรกิจ 
+                                และสามารถออกแบบโซลูชั่นที่ตอบโจทย์ทั้งผู้ใช้และองค์กร"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Projects Section -->
+        <section id="projects" class="section" aria-labelledby="projects-title">
+            <div class="container">
+                <h2 id="projects-title" class="section-title">ผลงานที่ภูมิใจ</h2>
+                
+                <div class="grid grid-3">
+                    <!-- Project 1 - Enhanced -->
+                    <article class="card project-card" tabindex="0">
+                        <div class="project-image">
+                            <i class="fas fa-calendar-alt project-icon" aria-hidden="true"></i>
+                        </div>
+                        
+                        <h3 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
+                            WorkPlanPro
+                        </h3>
+                        
+                        <p style="color: var(--text-secondary); margin-bottom: var(--space-6); line-height: 1.7; font-size: var(--text-base);">
+                            แอปพลิเคชันจัดตารางเวลาส่วนตัวที่ผมพัฒนาขึ้นเพื่อช่วยในการจัดระเบียบกิจกรรมประจำวัน 
+                            โดยเน้นการใช้งานที่ง่ายและมีประสิทธิภาพ
+                        </p>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">UX Research</span>
+                            <span class="project-tag">Prototyping</span>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="openModal('project1')" style="width: 100%;">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                            <span>ดูรายละเอียด</span>
+                        </button>
+                    </article>
+
+                    <!-- Project 2 - Enhanced -->
+                    <article class="card project-card" tabindex="0">
+                        <div class="project-image">
+                            <i class="fas fa-code project-icon" aria-hidden="true"></i>
+                        </div>
+                        
+                        <h3 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
+                            Lipsters Website
+                        </h3>
+                        
+                        <p style="color: var(--text-secondary); margin-bottom: var(--space-6); line-height: 1.7;">
+                            เว็บไซต์พอร์ตโฟลิโอที่พัฒนาด้วย HTML, CSS และ JavaScript 
+                            โดยเน้นการออกแบบที่ Modern และ Responsive
+                        </p>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Responsive</span>
+                        </div>
+                        
+                        <a href="https://lipsters.wixsite.com/designs" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            <span>ดูเว็บไซต์</span>
+                        </a>
+                    </article>
+
+                    <!-- Project 3 - Enhanced -->
+                    <article class="card project-card" tabindex="0">
+                        <div class="project-image">
+                            <i class="fas fa-palette project-icon" aria-hidden="true"></i>
+                        </div>
+                        
+                        <h3 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">
+                            Lipsters Design
+                        </h3>
+                        
+                        <p style="color: var(--text-secondary); margin-bottom: var(--space-6); line-height: 1.7;">
+                            เว็บไซต์พอร์ตออกแบบแรกที่สร้างขึ้นเพื่อแสดงผลงานและความสามารถในการออกแบบ 
+                            พร้อมกับการเรียนรู้เครื่องมือต่างๆ
+                        </p>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">Web Design</span>
+                            <span class="project-tag">Wix</span>
+                            <span class="project-tag">UI/UX</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                        
+                        <a href="https://lipsters.wixsite.com/lipster" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            <span>ดูเว็บไซต์</span>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- Call to Action -->
+                <div style="text-align: center; margin-top: var(--space-16);">
+                    <p style="font-size: var(--text-lg); color: var(--text-secondary); margin-bottom: var(--space-6);">
+                        มีไอเดียโปรเจคที่น่าสนใจ? มาทำงานร่วมกันเถอะ!
+                    </p>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                        <span>เริ่มต้นโปรเจค</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Skills Section -->
+        <section id="skills" class="section" aria-labelledby="skills-title">
+            <div class="container">
+                <h2 id="skills-title" class="section-title">ทักษะและความเชี่ยวชาญ</h2>
+                
+                <div class="grid grid-3">
+                    <div class="card skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-figma" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            Figma
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            เครื่องมือหลักในการออกแบบ UI/UX, Prototyping และ Design System
+                        </p>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-1);">
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">ความชำนาญ</span>
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">90%</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 90%; height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-html5" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            HTML & CSS
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            พื้นฐานการพัฒนาเว็บไซต์และการ implement design ให้เป็นจริง
+                        </p>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-1);">
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">ความชำนาญ</span>
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">85%</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 85%; height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-python" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            Python
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Programming language สำหรับ automation และ data analysis
+                        </p>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-1);">
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">ความชำนาญ</span>
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">75%</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 75%; height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            .NET Framework
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Framework สำหรับการพัฒนาแอปพลิเคชันและเว็บแอปพลิเคชัน
+                        </p>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-1);">
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">ความชำนาญ</span>
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">70%</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 70%; height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-paintbrush" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            Canva & Adobe
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            เครื่องมือในการสร้าง graphic design และ visual content
+                        </p>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-1);">
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">ความชำนาญ</span>
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">88%</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 88%; height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--text-primary);">
+                            GitHub & Git
+                        </h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Version control และ collaboration platform สำหรับการทำงานร่วมกัน
+                        </p>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-1);">
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">ความชำนาญ</span>
+                                <span style="font-size: var(--text-sm); color: var(--text-muted);">80%</span>
+                            </div>
+                            <div style="width: 100%; height: 4px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 80%; height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Skills -->
+                <div style="margin-top: var(--space-16); text-align: center;">
+                    <h3 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-8); color: var(--text-primary);">
+                        ทักษะเสริมอื่นๆ
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; max-width: 800px; margin: 0 auto;">
+                        <span class="tag">User Research</span>
+                        <span class="tag">Wireframing</span>
+                        <span class="tag">Prototyping</span>
+                        <span class="tag">Design Systems</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">Accessibility</span>
+                        <span class="tag">AI Tools</span>
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Team Collaboration</span>
+                        <span class="tag">Business Strategy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Contact Section -->
+        <section id="contact" class="section" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title" class="section-title">ติดต่อผม</h2>
+                
+                <div class="grid grid-2" style="gap: var(--space-12);">
+                    <!-- Contact Form -->
+                    <div class="card">
+                        <h3 style="font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-6); color: var(--primary-600); display: flex; align-items: center; gap: var(--space-3);">
+                            <i class="fas fa-paper-plane" style="color: var(--primary-500);"></i>
+                            ส่งข้อความถึงผม
+                        </h3>
+                        
+                        <form id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name" class="form-label">ชื่อ *</label>
+                                <input type="text" id="name" name="name" class="form-input" required aria-required="true" placeholder="กรุณากรอกชื่อของคุณ">
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">อีเมล *</label>
+                                <input type="email" id="email" name="email" class="form-input" required aria-required="true" placeholder="your.email@example.com">
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">หัวข้อ</label>
+                                <input type="text" id="subject" name="subject" class="form-input" placeholder="หัวข้อที่ต้องการติดต่อ">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">ข้อความ *</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="5" required aria-required="true" placeholder="กรุณาใส่ข้อความที่ต้องการส่งถึงผม..."></textarea>
+                                <span class="error-message" id="messageError"></span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <span id="submitText">ส่งข้อความ</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <div class="card contact-info-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>อีเมล</h4>
+                                <p>totofifa2015@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="card contact-info-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>เบอร์โทร</h4>
+                                <p>06-2589-6377</p>
+                            </div>
+                        </div>
+
+                        <div class="card contact-info-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>ที่อยู่</h4>
+                                <p>ปทุมธานี, ประเทศไทย</p>
+                            </div>
+                        </div>
+
+                        <!-- Quick Contact Options -->
+                        <div class="card" style="margin-top: var(--space-6); text-align: center;">
+                            <h4 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4); color: var(--text-primary);">
+                                🚀 ติดต่อด่วน
+                            </h4>
+                            <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                                <a href="tel:0625896377" class="btn btn-secondary" style="flex: 1; min-width: 120px;">
+                                    <i class="fas fa-phone"></i>
+                                    <span>โทร</span>
+                                </a>
+                                <a href="mailto:totofifa2015@gmail.com" class="btn btn-secondary" style="flex: 1; min-width: 120px;">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>อีเมล</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/ToAukit" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook - เพจของโตโต้">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/aukrit_to" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram - @aukrit_to">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/totofifa2015" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub - totofifa2015">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:totofifa2015@gmail.com" class="social-link" aria-label="ส่งอีเมลถึงโตโต้">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+            </div>
+            
+            <div style="margin-bottom: var(--space-6);">
+                <p style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2);">
+                    &copy; 2025 อุกฤษฏ์ ผลานิสงค์ (โตโต้)
+                </p>
+                <p style="opacity: 0.8; margin-bottom: var(--space-4);">
+                    UX/UI Designer with CEO Mindset | สร้างด้วยความตั้งใจและรักในการออกแบบ ❤️
+                </p>
+                <p style="font-size: var(--text-sm); opacity: 0.7);">
+                    "การออกแบบที่ดีคือการแก้ปัญหาที่ซ่อนอยู่ในความเรียบง่าย" - โตโต้
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="กลับขึ้นด้านบน">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Enhanced Modal -->
+    <div class="modal" id="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="ปิดหน้าต่าง">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Enhanced Notification -->
+    <div class="notification" id="notification" role="alert" aria-live="polite">
+        <i class="notification-icon fas fa-check-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Performance and Accessibility Improvements
+        class PortfolioManager {
+            constructor() {
+                this.init();
+                this.setupEventListeners();
+                this.setupIntersectionObserver();
+                this.setupPerformanceMonitoring();
+            }
+
+            init() {
+                // Initialize all components
+                this.createOptimizedParticles();
+                this.initializeScrollEffects();
+                this.initializeNavigation();
+                this.initializeTheme();
+                this.initializeFormValidation();
+                this.hideLoadingOverlay();
+                
+                // Announce page loaded to screen readers
+                this.announceToScreenReader('หน้าเว็บโหลดเสร็จสมบูรณ์');
+            }
+
+            // Enhanced particle system with better performance
+            createOptimizedParticles() {
+                const particles = document.getElementById('particles');
+                const particleCount = window.innerWidth < 768 ? 8 : 15;
+                
+                // Use DocumentFragment for better performance
+                const fragment = document.createDocumentFragment();
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    fragment.appendChild(particle);
+                }
+                
+                particles.appendChild(fragment);
+            }
+
+            // Improved loading overlay with better UX
+            hideLoadingOverlay() {
+                setTimeout(() => {
+                    const overlay = document.getElementById('loadingOverlay');
+                    overlay.classList.add('hidden');
+                    
+                    // Remove from DOM after animation
+                    setTimeout(() => {
+                        overlay.remove();
+                    }, 500);
+                }, 800);
+            }
+
+            // Enhanced navigation with better accessibility
+            initializeNavigation() {
+                const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                const navMenu = document.getElementById('navMenu');
+                
+                mobileMenuToggle.addEventListener('click', () => {
+                    const isExpanded = navMenu.classList.contains('active');
+                    navMenu.classList.toggle('active');
+                    
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                    
+                    // Update ARIA attributes
+                    mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+                    
+                    // Focus management
+                    if (!isExpanded) {
+                        navMenu.querySelector('.nav-link').focus();
+                    }
+                });
+
+                // Enhanced smooth scrolling with better UX
+                navMenu.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('nav-link')) {
+                        e.preventDefault();
+                        const targetId = e.target.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            // Close mobile menu first
+                            navMenu.classList.remove('active');
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                            
+                            // Smooth scroll with offset for fixed navbar
+                            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                            const targetPosition = targetSection.offsetTop - navbarHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update active state
+                            this.updateActiveNavLink(e.target);
+                            
+                            // Announce section change to screen readers
+                            this.announceToScreenReader(`กำลังไปยังส่วน ${e.target.textContent}`);
+                        }
+                    }
+                });
+            }
+
+            // Enhanced scroll effects with better performance
+            initializeScrollEffects() {
+                let ticking = false;
+                const navbar = document.getElementById('navbar');
+                const scrollProgress = document.getElementById('scrollProgress');
+                const backToTop = document.getElementById('backToTop');
+                
+                const updateScrollEffects = () => {
+                    const scrollY = window.pageYOffset;
+                    const docHeight = document.body.scrollHeight - window.innerHeight;
+                    const scrollPercent = Math.min((scrollY / docHeight) * 100, 100);
+                    
+                    // Update progress bar
+                    scrollProgress.style.width = scrollPercent + '%';
+                    
+                    // Update navbar
+                    navbar.classList.toggle('scrolled', scrollY > 50);
+                    
+                    // Show/hide back to top
+                    backToTop.classList.toggle('visible', scrollY > 400);
+                    
+                    // Update active navigation based on scroll position
+                    this.updateActiveNavOnScroll();
+                    
+                    ticking = false;
+                };
+                
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(updateScrollEffects);
+                        ticking = true;
+                    }
+                }, { passive: true });
+            }
+
+            // Enhanced theme toggle with better UX
+            initializeTheme() {
+                const themeToggle = document.getElementById('themeToggle');
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                this.updateThemeIcon(savedTheme);
+
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    this.updateThemeIcon(newTheme);
+                    
+                    // Announce theme change
+                    this.announceToScreenReader(`เปลี่ยนเป็นธีม${newTheme === 'dark' ? 'มืด' : 'สว่าง'}แล้ว`);
+                });
+            }
+
+            updateThemeIcon(theme) {
+                const icon = document.querySelector('#themeToggle i');
+                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+
+            // Enhanced form validation with better UX
+            initializeFormValidation() {
+                const form = document.getElementById('contactForm');
+                const inputs = form.querySelectorAll('input, textarea');
+                
+                // Real-time validation
+                inputs.forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => {
+                        if (input.classList.contains('error')) {
+                            this.validateField(input);
+                        }
+                    });
+                });
+                
+                form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+            }
+
+            validateField(field) {
+                const errorElement = document.getElementById(field.id + 'Error');
+                let isValid = true;
+                let message = '';
+                
+                if (field.hasAttribute('required') && !field.value.trim()) {
+                    isValid = false;
+                    message = `กรุณากรอก${field.labels[0].textContent.replace('*', '').trim()}`;
+                } else if (field.type === 'email' && field.value) {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(field.value)) {
+                        isValid = false;
+                        message = 'กรุณากรอกอีเมลให้ถูกต้อง';
+                    }
+                } else if (field.id === 'message' && field.value && field.value.length < 10) {
+                    isValid = false;
+                    message = 'ข้อความต้องมีอย่างน้อย 10 ตัวอักษร';
+                }
+                
+                // Update UI based on validation
+                field.classList.toggle('error', !isValid);
+                errorElement.textContent = message;
+                errorElement.classList.toggle('show', !isValid);
+                
+                return isValid;
+            }
+
+            handleFormSubmit(e) {
+                e.preventDefault();
+                
+                // Validate all fields
+                const form = e.target;
+                const inputs = form.querySelectorAll('input, textarea');
+                let isFormValid = true;
+                
+                inputs.forEach(input => {
+                    if (!this.validateField(input)) {
+                        isFormValid = false;
+                    }
+                });
+                
+                if (!isFormValid) {
+                    this.showNotification('กรุณาตรวจสอบข้อมูลที่กรอก', 'error');
+                    // Focus on first error field
+                    const firstError = form.querySelector('.error');
+                    if (firstError) firstError.focus();
+                    return;
+                }
+                
+                // Show loading state
+                const submitButton = form.querySelector('button[type="submit"]');
+                const submitText = document.getElementById('submitText');
+                const originalText = submitText.textContent;
+                
+                submitButton.disabled = true;
+                submitText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่ง...';
+                
+                // Simulate form submission (replace with actual API call)
+                setTimeout(() => {
+                    form.reset();
+                    submitButton.disabled = false;
+                    submitText.textContent = originalText;
+                    this.showNotification('ส่งข้อความสำเร็จ! ขอบคุณที่ติดต่อ ผมจะตอบกลับโดยเร็วที่สุด', 'success');
+                    this.announceToScreenReader('ส่งข้อความสำเร็จแล้ว');
+                }, 2000);
+            }
+
+            // Enhanced notification system
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                const notificationText = document.getElementById('notificationText');
+                const notificationIcon = notification.querySelector('.notification-icon');
+                
+                // Update content and styling
+                notificationText.textContent = message;
+                notification.className = `notification ${type} show`;
+                
+                // Update icon based on type
+                const icons = {
+                    success: 'fas fa-check-circle',
+                    error: 'fas fa-exclamation-circle',
+                    warning: 'fas fa-exclamation-triangle',
+                    info: 'fas fa-info-circle'
+                };
+                notificationIcon.className = `notification-icon ${icons[type] || icons.info}`;
+                
+                // Auto hide after 5 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            }
+
+            // Enhanced modal system
+            openModal(projectId) {
+                const projectData = {
+                    project1: {
+                        title: 'WorkPlanPro',
+                        description: 'แอปพลิเคชันจัดตารางเวลาและกิจกรรมในชีวิตประจำวัน',
+                        longDescription: 'โปรเจคนี้เกิดขึ้นจากความต้องการส่วนตัวในการจัดระเบียบเวลาให้มีประสิทธิภาพมากขึ้น ผมได้ทำการวิจัยพฤติกรรมผู้ใช้ สร้าง User Persona และออกแบบ User Flow ที่ตอบโจทย์ความต้องการจริง',
+                        challenges: [
+                            'การออกแบบ UI ที่ใช้งานง่ายสำหรับทุกกลุ่มอายุ',
+                            'การจัดการข้อมูลที่ซับซ้อนให้เป็นระเบียบ',
+                            'การสร้าง Notification ที่ไม่รบกวน',
+                            'การ Sync ข้อมูลข้ามอุปกรณ์'
+                        ],
+                        solutions: [
+                            'ใช้ Design System ที่สอดคล้องกันทั้งแอป',
+                            'สร้าง Information Architecture ที่ชัดเจน',
+                            'ออกแบบ Smart Notification System',
+                            'ใช้ Cloud Database สำหรับ Real-time Sync'
+                        ],
+                        technologies: ['Flutter', 'Figma', 'Firebase', 'UX Research', 'Prototyping', 'User Testing'],
+                        impact: 'ช่วยเพิ่มประสิทธิภาพการทำงานของผู้ใช้ขึ้น 40% และลดเวลาในการวางแผนรายวัน 60%'
+                    }
+                };
+
+                const project = projectData[projectId];
+                if (!project) return;
+
+                const modalBody = document.getElementById('modalBody');
+                modalBody.innerHTML = `
+                    <div style="margin-bottom: var(--space-6);">
+                        <h2 style="font-size: var(--text-3xl); font-weight: 800; margin-bottom: var(--space-3); background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                            ${project.title}
+                        </h2>
+                        <p style="font-size: var(--text-lg); color: var(--text-secondary); line-height: 1.7;">
+                            ${project.description}
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-4); color: var(--text-primary);">
+                            📋 รายละเอียดโปรเจค
+                        </h3>
+                        <p style="line-height: 1.7; color: var(--text-secondary); margin-bottom: var(--space-6);">
+                            ${project.longDescription}
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-4); color: var(--text-primary);">
+                            🎯 ความท้าทาย
+                        </h3>
+                        <ul style="list-style: none; padding: 0;">
+                            ${project.challenges.map(challenge => `
+                                <li style="margin-bottom: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-500);">
+                                    ${challenge}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-4); color: var(--text-primary);">
+                            💡 การแก้ปัญหา
+                        </h3>
+                        <ul style="list-style: none; padding: 0;">
+                            ${project.solutions.map(solution => `
+                                <li style="margin-bottom: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--success); color: white; border-radius: var(--radius-lg); opacity: 0.9;">
+                                    ${solution}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-4); color: var(--text-primary);">
+                            🛠️ เทคโนโลยีที่ใช้
+                        </h3>
+                        <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                            ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div style="padding: var(--space-6); background: var(--gradient-primary); color: white; border-radius: var(--radius-xl); text-align: center;">
+                        <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3);">
+                            📈 ผลลัพธ์
+                        </h3>
+                        <p style="font-size: var(--text-lg); opacity: 0.95; line-height: 1.7;">
+                            ${project.impact}
+                        </p>
+                    </div>
+                `;
+
+                const modal = document.getElementById('modal');
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management
+                modal.querySelector('.modal-close').focus();
+                
+                // Announce modal opening to screen readers
+                this.announceToScreenReader(`เปิดรายละเอียดโปรเจค ${project.title}`);
+            }
+
+            closeModal() {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                
+                this.announceToScreenReader('ปิดหน้าต่างรายละเอียดโปรเจค');
+            }
+
+            // Intersection Observer for animations
+            setupIntersectionObserver() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                            entry.target.classList.add('animate-in');
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe elements for animation
+                document.querySelectorAll('.card, .section-title').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            // Performance monitoring
+            setupPerformanceMonitoring() {
+                // Monitor page load performance
+                window.addEventListener('load', () => {
+                    if ('performance' in window) {
+                        const perfData = performance.getEntriesByType('navigation')[0];
+                        console.log(`Page load time: ${perfData.loadEventEnd - perfData.loadEventStart}ms`);
+                    }
+                });
+
+                // Monitor memory usage (if available)
+                if ('memory' in performance) {
+                    setInterval(() => {
+                        const memInfo = performance.memory;
+                        if (memInfo.usedJSHeapSize / memInfo.jsHeapSizeLimit > 0.9) {
+                            console.warn('High memory usage detected');
+                        }
+                    }, 30000);
+                }
+            }
+
+            // Enhanced event listeners
+            setupEventListeners() {
+                // Back to top button
+                document.getElementById('backToTop').addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    this.announceToScreenReader('กลับไปด้านบนแล้ว');
+                });
+
+                // Modal event listeners
+                document.getElementById('modal').addEventListener('click', (e) => {
+                    if (e.target.id === 'modal') {
+                        this.closeModal();
+                    }
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        const modal = document.getElementById('modal');
+                        if (modal.classList.contains('active')) {
+                            this.closeModal();
+                        }
+                    }
+                });
+
+                // Visibility change for performance
+                document.addEventListener('visibilitychange', () => {
+                    const particles = document.getElementById('particles');
+                    if (particles) {
+                        particles.style.display = document.hidden ? 'none' : 'block';
+                    }
+                });
+            }
+
+            // Utility functions
+            updateActiveNavLink(activeLink) {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                activeLink.classList.add('active');
+            }
+
+            updateActiveNavOnScroll() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let currentSection = '';
+                const scrollPos = window.pageYOffset + 100;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            announceToScreenReader(message) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.className = 'sr-only';
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    document.body.removeChild(announcement);
+                }, 1000);
+            }
+        }
+
+        // Global functions for compatibility
+        function openModal(projectId) {
+            portfolioManager.openModal(projectId);
+        }
+
+        function closeModal() {
+            portfolioManager.closeModal();
+        }
+
+        // Initialize when DOM is ready
+        let portfolioManager;
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                portfolioManager = new PortfolioManager();
+            });
+        } else {
+            portfolioManager = new PortfolioManager();
+        }
+
+        // Service Worker for offline functionality (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Add CSS animation keyframes dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .animate-in {
+                animation: fadeInUp 0.6s ease-out forwards;
+            }
+            
+            /* Enhanced focus styles for better accessibility */
+            .card:focus-within {
+                outline: 2px solid var(--primary-500);
+                outline-offset: 2px;
+            }
+            
+            /* Improved button hover effects */
+            .btn:focus-visible {
+                outline: 2px solid var(--primary-300);
+                outline-offset: 2px;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- Schema markup for better SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "อุกฤษฏ์ ผลานิสงค์",
+        "alternateName": "โตโต้",
+        "jobTitle": "UX/UI Designer",
+        "description": "UX/UI Designer with CEO Mindset ที่มุ่งเน้นการสร้างสรรค์ผลงานที่ใช้งานง่ายและตอบโจทย์ผู้ใช้จริง",
+        "url": "https://yourwebsite.com",
+        "image": "https://yourwebsite.com/img/profile-me.jpg",
+        "email": "totofifa2015@gmail.com",
+        "telephone": "+66625896377",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "ปทุมธานี",
+            "addressCountry": "TH"
+        },
+        "sameAs": [
+            "https://www.facebook.com/ToAukit",
+            "https://www.instagram.com/aukrit_to",
+            "https://github.com/totofifa2015"
+        ],
+        "knowsAbout": [
+            "UX Design",
+            "UI Design",
+            "Figma",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Python",
+            "User Research",
+            "Prototyping"
+        ]
+    }
+    </script>
+</body>
+</html>
+                    
