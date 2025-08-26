@@ -1,3 +1,4 @@
+<!-- Index Main -->
 <!DOCTYPE html>
 <html lang="th" xmlns:og="http://ogp.me/ns#">
 <head>
@@ -377,18 +378,20 @@
         }
 
         /* Advanced Hero Animations */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: var(--gradient-mesh);
-            background-size: 200% 200%;
-            animation: meshAnimation 15s ease-in-out infinite;
-        }
+        /* โค้ดที่แก้ไขแล้ว */
+.hero {
+    min-height: 120vh; /* เพิ่มความสูงของส่วน hero เพื่อให้ครอบคลุมส่วน about ด้วย */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-mesh);
+    background-size: 200% 200%;
+    animation: meshAnimation 15s ease-in-out infinite;
+    z-index: 1; /* กำหนด z-index เพื่อให้ content อยู่หน้าพื้นหลัง */
+}
 
         /* Advanced mesh animation */
         @keyframes meshAnimation {
@@ -494,7 +497,7 @@
             line-height: 1.8;
             opacity: 0;
             animation: slideUpStagger 1s var(--ease-out-expo) 0.8s forwards;
-            max-width: 700px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -603,10 +606,12 @@
             background: var(--bg-primary);
         }
 
-        #about {
-            background: linear-gradient(180deg, rgba(102, 126, 234, 0.1) 0%, var(--bg-secondary) 20%);
-            padding-top: 6rem;
-        }
+        /* โค้ดที่แก้ไขแล้ว */
+#about {
+    padding-top: 6rem;
+    position: relative; /* เพิ่มโค้ดนี้เพื่อให้ส่วนนี้อยู่เหนือพื้นหลัง */
+    background: var(--bg-primary); /* กำหนดพื้นหลังให้เป็นสีทึบ */
+}
 
         .container {
             max-width: 1400px;
@@ -808,10 +813,9 @@
         }
 
         .profile-section {
-            text-align: center;
-            position: sticky;
-            top: 120px;
-        }
+    text-align: center;
+    /* ลบโค้ด position: sticky; และ top: 120px; ออก */
+}
 
         .profile-image {
             width: 200px;
@@ -1906,6 +1910,48 @@
             animation: shake 0.5s ease-in-out;
         }
 
+        /* Skills Section */
+        #skills {
+            padding: 6rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            text-align: center;
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover .skill-icon {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .skill-name {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
@@ -1946,7 +1992,7 @@
                 <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 1rem;">
-                <button class="theme-toggle tooltip" id="themeToggle" data-tooltip="เปลี่ยนธีม">
+                <button class="theme-toggle tooltip" id="themeToggle">
                     <i class="fas fa-moon"></i>
                 </button>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -1964,8 +2010,7 @@
             <p class="hero-subtitle">UX/UI Designer</p>
             <p class="hero-description">
                 ผมเป็นนักศึกษาที่กำลังศึกษาด้าน UX/UI Design อยู่ที่ Bangkok University 
-                สาขา Computer Science (IT Innovation) พยายามเรียนรู้จากประสบการณ์และ feedback 
-                เพื่อพัฒนาตัวเองให้ดีขึ้นในทุกๆ วัน
+                สาขา Computer Science พยายามเรียนรู้จากประสบการณ์และ feedback เพื่อพัฒนาตัวเองให้ดีขึ้นในทุกๆ วัน
             </p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">
@@ -2019,20 +2064,8 @@
                             <p>Wireframe และ UI Design</p>
                         </div>
                         <div class="info-item">
-                            <h4>🎨 สไตล์ UI</h4>
-                            <p>Modern, Clean & User-Friendly</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>🌈 Color Palette</h4>
-                            <p>Modern Blue + Pastel Tones</p>
-                        </div>
-                        <div class="info-item">
                             <h4>🎓 การศึกษา</h4>
-                            <p>Bangkok University - Computer Science (IT Innovation)</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>📍 ที่อยู่</h4>
-                            <p>ปทุมธานี, ประเทศไทย</p>
+                            <p>Bangkok University - Computer Science</p>
                         </div>
                     </div>
                     
@@ -2041,11 +2074,11 @@
                         <div style="display: grid; gap: 0.75rem;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
-                                <span style="color: var(--text-secondary);">เรียนรู้เครื่องมือใหม่ๆ เช่น Adobe XD, Framer และ Webflow</span>
+                                <span style="color: var(--text-secondary);">ศึกษาความรู้จากผู้มีประสบการณ์บนแพลตฟอร์มออนไลน์ต่างๆ</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
-                                <span style="color: var(--text-secondary);">ฝึกทำ UX Research และ User Testing อย่างเป็นระบบ</span>
+                                <span style="color: var(--text-secondary);">พยายามศึกษาจากผลงานการออกแบบตามเว็บไซต์ต่างๆที่พบ และนำมาวิเคราะห์เพื่อเป็นความรู้หรือหาแนวทางใหม่ๆ</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%;"></div>
@@ -2138,57 +2171,70 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section fade-in">
+<!-- Skills Section -->
+    <section id="skills">
         <div class="container">
-            <h2 class="section-title">ทักษะและความเชี่ยวชาญ</h2>
-            <div class="grid grid-3 stagger-children">
-                <div class="card skill-card">
+            <h2 class="section-title">ทักษะที่กำลังพัฒนา</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
                     <div class="skill-icon">
                         <i class="fab fa-figma"></i>
                     </div>
-                    <h3>Figma</h3>
-                    <p>เครื่องมือหลักในการออกแบบ UI/UX, Prototyping และ Collaboration ที่ช่วยให้การทำงานเป็นทีมมีประสิทธิภาพและสร้างผลงานที่มีคุณภาพ</p>
+                    <p class="skill-name">Figma</p>
                 </div>
-
-                <div class="card skill-card">
+                <div class="skill-item">
                     <div class="skill-icon">
                         <i class="fab fa-html5"></i>
                     </div>
-                    <h3>HTML & CSS</h3>
-                    <p>พื้นฐานการพัฒนาเว็บไซต์และการ implement design ให้เป็นผลงานจริงที่ใช้งานได้และมีความสวยงาม</p>
+                    <p class="skill-name">HTML5</p>
                 </div>
-
-                <div class="card skill-card">
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <p class="skill-name">CSS3</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <p class="skill-name">JavaScript</p>
+                </div>
+                <div class="skill-item">
                     <div class="skill-icon">
                         <i class="fab fa-python"></i>
                     </div>
-                    <h3>Python</h3>
-                    <p>Programming language สำหรับ automation และ data analysis ที่ช่วยในการวิเคราะห์ข้อมูลผู้ใช้และปรับปรุงผลงาน</p>
+                    <p class="skill-name">Python</p>
                 </div>
-
-                <div class="card skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>.NET</h3>
-                    <p>Framework สำหรับการพัฒนาแอปพลิเคชันที่มีประสิทธิภาพและความเสถียรสูง รองรับการทำงานแบบ Cross-platform</p>
-                </div>
-
-                <div class="card skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-paintbrush"></i>
-                    </div>
-                    <h3>Canva</h3>
-                    <p>เครื่องมือในการสร้าง graphic design และ presentation ที่ช่วยให้การสื่อสารและนำเสนอผลงานมีประสิทธิภาพ</p>
-                </div>
-
-                <div class="card skill-card">
+                <div class="skill-item">
                     <div class="skill-icon">
                         <i class="fab fa-github"></i>
                     </div>
-                    <h3>GitHub</h3>
-                    <p>Version control และ collaboration platform สำหรับการจัดการโค้ดและการทำงานร่วมกันในทีม</p>
+                    <p class="skill-name">GitHub</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <p class="skill-name">Flutter</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <p class="skill-name">Canva</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <p class="skill-name">Firebase</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <p class="skill-name">.NET</p>
                 </div>
             </div>
         </div>
@@ -2337,7 +2383,7 @@
                         </div>
                         <div>
                             <h4>การศึกษา</h4>
-                            <p>Bangkok University<br>Computer Science (IT Innovation)</p>
+                            <p>Bangkok University<br>Computer Science</p>
                         </div>
                     </div>
                 </div>
@@ -2349,19 +2395,19 @@
     <footer class="footer">
         <div class="container">
             <div class="social-links">
-                <a href="https://www.facebook.com/ToAukit" target="_blank" class="social-link tooltip" data-tooltip="Facebook">
+                <a href="https://www.facebook.com/ToAukit" target="_blank" class="social-link tooltip">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com/aukrit_to" target="_blank" class="social-link tooltip" data-tooltip="Instagram">
+                <a href="https://www.instagram.com/aukrit_to" target="_blank" class="social-link tooltip">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://github.com/totofifa2015" target="_blank" class="social-link tooltip" data-tooltip="GitHub">
+                <a href="https://github.com/totofifa2015" target="_blank" class="social-link tooltip">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="mailto:totofifa2015@gmail.com" class="social-link tooltip" data-tooltip="Email">
+                <a href="mailto:totofifa2015@gmail.com" class="social-link tooltip">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://portfolio-2-1i2w.onrender.com/" target="_blank" class="social-link tooltip" data-tooltip="Portfolio">
+                <a href="https://portfolio-2-1i2w.onrender.com/" target="_blank" class="social-link tooltip">
                     <i class="fas fa-link"></i>
                 </a>
             </div>
@@ -2724,7 +2770,7 @@
                     title: 'WorkPlanPro',
                     description: 'แอปพลิเคชันจัดตารางเวลาและกิจกรรมในชีวิตประจำวัน',
                     details: [
-                        '🔍 วิจัยและทำความเข้าใจผู้ใช้งานอย่างลึกซึ้ง',
+                        '🔍 วิจัยและทำความเข้าใจผู้ใช้งาน',
                         '🗺️ สร้าง User Flow และ Wireframe ที่ชัดเจน',
                         '🎨 ออกแบบ UI ที่ใช้งานง่ายและมีประสิทธิภาพ',
                         '🧪 ทดสอบกับผู้ใช้จริงและปรับปรุงตาม Feedback',
